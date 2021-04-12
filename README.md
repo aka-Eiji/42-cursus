@@ -2,6 +2,7 @@
 ## Welcome to my 42 cursus repo, I will use it mainly as a workspace, so I will upload it whenever I need it, enjoy!
 ### Projects:
 ```
+Piscine   - all the projects done at "la piscine";
 Libft       graded with 112/115;
 Ft_server - work in progress;
 ```
