@@ -1,0 +1,5 @@
+Credentials cache: API:9A7B6C71-83AB-4C5C-81E0-BAA35F4C2EEC
+        Principal: jkosiara@42ROMA.IT
+
+  Issued                Expires               Principal
+Nov 26 12:18:29 2020  Nov 26 22:18:29 2020  krbtgt/42ROMA.IT@42ROMA.IT
