@@ -1,13 +1,10 @@
 # Hi there👋
 ## Welcome to my 42 cursus repo, I will use it mainly as a workspace, so I will upload it whenever I need it, enjoy!
-
+### Projects:
 ```
 Libft       graded with 112/115;
 Ft_server - work in progress;
 ```
-### Projects:
-#### Libft - graded with 112/115;
-#### Ft_server - work in progress;
 [![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jkosiara)](https://github.com/JaeSeoKim/badge42)
 <!--
 **aka-Eiji/aka-Eiji** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
