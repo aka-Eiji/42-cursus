@@ -1,6 +1,10 @@
 # Hi there👋
 ## Welcome to my 42 cursus repo, I will use it mainly as a workspace, so I will upload it whenever I need it, enjoy!
 
+```
+Libft       graded with 112/115;
+Ft_server - work in progress;
+```
 ### Projects:
 #### Libft - graded with 112/115;
 #### Ft_server - work in progress;
