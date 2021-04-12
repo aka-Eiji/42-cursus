@@ -3,8 +3,9 @@
 ### Projects:
 ```
 Piscine   - all the projects done at "la piscine";
-Libft       graded with 112/115;
+Libft     - graded with 112/115;
 Ft_server - work in progress;
+Cub3d     - work in progress;
 ```
 [![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jkosiara)](https://github.com/JaeSeoKim/badge42)
 <!--
