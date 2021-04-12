@@ -1,0 +1,31 @@
+# Default server configuration
+#
+server {
+	listen 80 default_server;
+ 	listen [::]:80 default_server;
+return 301 https://$host$request_uri;
+}
+server{
+ 	listen 443 ssl default_server;
+ 	listen [::]:443 ssl default_server;
+ 	
+	ssl_certificate /etc/ssl/nginx-selfsigned.crt;
+ 	ssl_certificate_key /etc/ssl/nginx-selfsigned.key;
+ 	ssl_session_tickets off;
+
+	root /var/www/html/;
+
+	# Add index.php to the list if you are using PHP
+	index index.php index.html index.htm ;
+
+	server_name _;
+
+	location / {
+		autoindex on;
+		try_files $uri $uri/ =404;
+	}
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+	}
+}
