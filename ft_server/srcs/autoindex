@@ -1,0 +1,14 @@
+if [[ $1 == "off" ]]
+then
+    sed -i 's/autoindex on/ autoindex off/g' /etc/nginx/sites-enabled/default
+    nginx -s reload
+    echo "AUTOINDEX_OFF_❎"
+elif [[ $1 == "on" ]]
+then
+    sed -i 's/autoindex off/ autoindex on/g' /etc/nginx/sites-enabled/default
+    nginx -s reload
+    echo "AUTOINDEX_ON_✅"
+else
+    echo "NOTHING_HAPPENED_TRY_USING_ON_&&_OFF"
+fi
+
