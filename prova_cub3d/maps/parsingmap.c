@@ -3,17 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   parsingmap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:09:08 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/04/27 18:19:07 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/04/27 20:47:16 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include <stdlib.h>
 #include <unistd.h>
-#include "../libft/libft.h"
+#include <fcntl.h>
+#include "../cub3d.h"
+
+typedef struct s_maps{
+        int resx;
+        int resy;
+        
+}              t_maps;
+
 
 char *charjoin(char *s, char c, int max)
 {
@@ -46,30 +54,43 @@ int gnl(int fd, char **line)
 	return i == 0 ? 0 : 1;
 }
 
-void ft_parsemap(t_all)
+void ft_parsemap(t_maps *maps)
 {
-    t_maps resx;
-    t_maps resy;
     int i;
     int fd;
     char *newline;
     int resolution;
     char *tmp;
+	i = 0;
+	maps->resx = 0;
 
+	resolution = 0;
     fd = open("maps.cub", O_RDONLY);
-    while (gnl(fd, *newline))
+    while (gnl(fd, &newline))
     {
-        if (newline[0] == 'R')
+			
+        if (newline[i] == 'R')
         {
-            tmp = ft_strtrim(newline, "R/t ");
+            tmp = ft_strtrim(newline, "R\t ");
             while(tmp[i] >='0' && tmp[i] <='9')
             {
-                resolution= resolution * 10 + tmp[i] - 48;
+                maps->resx = (maps->resx * 10) + (tmp[i] - 48);
                 i++;
             }
-        resx = resolution;
+			while(tmp[i] != )
+			{
+				if ()	
+			}
+			printf("%d\n", i);
+		
         }
     } 
-    
-    
+}
+#include <stdio.h>
+int main()
+{
+	t_maps maps;
+	ft_parsemap(&maps);
+	printf("%d\n%d\n", maps.resx, maps.resy);
+	return 0;
 }
