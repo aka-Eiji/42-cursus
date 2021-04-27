@@ -6,10 +6,9 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:20:42 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/04/23 19:32:59 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/04/27 17:05:25 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include <mlx.h>
 #include <stdio.h>
@@ -69,28 +68,23 @@ int             key_hook(int keycode, t_vars *vars)
          printf("You pressed D button, nice!\n");
 }
 
-int             main(void)
+int             main(int argc, char **argv)
 {
     t_vars      vars;
     t_data      img;
     int         i;
     int         j;
-
+    
     i = 0;
     vars.mlx = mlx_init();
-    vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
-    img.img = mlx_new_image(vars.mlx, 1920, 1080);
-    img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-                                 &img.endian);
-    while (i < 250)
+    if (argc != 3)
     {
-        my_mlx_pixel_put(&img, 500 , 500 + i, 0x00FF0000);
-        my_mlx_pixel_put(&img, 500 + i, 500, 0x00FF0000);
-        my_mlx_pixel_put(&img, 500 + j , 500, 0x00FF0000);
-        my_mlx_pixel_put(&img, 500, 500 + j, 0x00FF0000);
-        mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
-        i++;
-        j++;
+        printf("Error, insert a value please. \n");
+        exit (0);
+    }
+    else
+    {
+        vars.win = mlx_new_window(vars.mlx, 1920, 1080,  "Il gioco dell'anno!");
     }
     mlx_key_hook(vars.win, key_hook, &vars);
     mlx_hook(vars.win, 17, 1L<<0, close, &vars);
