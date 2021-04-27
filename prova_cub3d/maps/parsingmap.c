@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:09:08 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/04/27 17:19:21 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/04/27 18:19:07 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,23 +54,22 @@ void ft_parsemap(t_all)
     int fd;
     char *newline;
     int resolution;
+    char *tmp;
 
     fd = open("maps.cub", O_RDONLY);
     while (gnl(fd, *newline))
     {
         if (newline[0] == 'R')
         {
-            ft_strtrim()
-            while(newline[i] >='0' && newline[i] <='9')
+            tmp = ft_strtrim(newline, "R/t ");
+            while(tmp[i] >='0' && tmp[i] <='9')
             {
-                resolution=ft_strjoin(resolution, newline[i]);
+                resolution= resolution * 10 + tmp[i] - 48;
                 i++;
             }
         resx = resolution;
-        }   
+        }
     } 
-    
-    
     
     
 }
