@@ -6,15 +6,26 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/04/27 20:20:01 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/04/28 12:58:05 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
-typedef struct  s_vars {
-        void    *mlx;
-        void    *win;
+typedef struct  s_vars 
+{
+    void    *mlx;
+    void    *win;
 }               t_vars;
+
+typedef struct s_maps
+{
+    int resx;
+	int resy;
+	char *NO;
+	char *SO;
+	char *str;
+	int	i;
+}              t_maps;
 
 /*typedef struct s_pos{
     

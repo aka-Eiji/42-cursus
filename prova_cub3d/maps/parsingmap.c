@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:09:08 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/04/27 20:47:16 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/04/28 17:15:43 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "../cub3d.h"
-
-typedef struct s_maps{
-        int resx;
-        int resy;
-        
-}              t_maps;
-
+#include <stdio.h>
 
 char *charjoin(char *s, char c, int max)
 {
@@ -54,43 +48,57 @@ int gnl(int fd, char **line)
 	return i == 0 ? 0 : 1;
 }
 
-void ft_parsemap(t_maps *maps)
+void	ft_parsemap(t_maps *maps, char *newline)
 {
     int i;
     int fd;
-    char *newline;
-    int resolution;
     char *tmp;
+	char **tmp1;
+
 	i = 0;
 	maps->resx = 0;
-
-	resolution = 0;
+	maps->resy = 0;
     fd = open("maps.cub", O_RDONLY);
     while (gnl(fd, &newline))
-    {
-			
+    {	
         if (newline[i] == 'R')
         {
             tmp = ft_strtrim(newline, "R\t ");
-            while(tmp[i] >='0' && tmp[i] <='9')
+            while(tmp[i] >= '0' && tmp[i] <= '9')
             {
                 maps->resx = (maps->resx * 10) + (tmp[i] - 48);
                 i++;
             }
-			while(tmp[i] != )
+			while(tmp[i] == '\t' || tmp[i] == ' ')
+				i++;
+			while(tmp[i] >= '0' && tmp[i] <= '9')
 			{
-				if ()	
+				maps->resy = (maps->resy * 10) + (tmp[i] - 48);
+               	i++;
 			}
-			printf("%d\n", i);
-		
+			free(tmp);
         }
-    } 
+    }
+	if(newline)
+		tmp1 = ft_split(newline, '\n');
+	printf("%s\n", tmp1[0][1]);
 }
-#include <stdio.h>
+
+
+// void	texture(t_maps *t_maps, char *newline)
+// {
+// 	char **tmp;
+
+// }
+
+
+
 int main()
 {
 	t_maps maps;
-	ft_parsemap(&maps);
-	printf("%d\n%d\n", maps.resx, maps.resy);
+	char *newline;
+	ft_parsemap(&maps, newline);
+	// texture(&maps, newline);
+	printf("resx %d\nresy %d\n", maps.resx, maps.resy);
 	return 0;
 }
