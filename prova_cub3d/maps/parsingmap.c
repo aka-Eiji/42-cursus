@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:09:08 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/04/28 17:15:43 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/04/30 17:16:42 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,60 +37,87 @@ int gnl(int fd, char **line)
 		return -1;
 	*line = malloc(1);
 	*line[0] = 0;
-	while((i = read(fd, &c, 1)) > 0)
+	i = read(fd, &c, 1);
+	while(i > 0)
 	{
 		if(c == '\n')
 			break;
 		*line = charjoin(*line, c, max++);
+		i = read(fd, &c, 1);
 	}
-	if (i == -1)
-		return(-1);
-	return i == 0 ? 0 : 1;
+	if (i < 0)
+		return (-1);
+	if (i)
+		return (1);
+	return (0);
+	
+}
+
+void	ft_res(char *newline, t_maps *maps)
+{
+	char *tmp;
+	int i;
+
+	i = 0;
+	maps->resx = 0;
+	maps->resy = 0;
+    tmp = ft_strtrim(newline, "R\t ");
+    while(tmp[i] >= '0' && tmp[i] <= '9')
+    {
+    	maps->resx = (maps->resx * 10) + (tmp[i] - 48);
+        i++;
+    }
+	while(tmp[i] == '\t' || tmp[i] == ' ')
+		i++;
+	while(tmp[i] >= '0' && tmp[i] <= '9')
+	{
+		maps->resy = (maps->resy * 10) + (tmp[i] - 48);
+        i++;
+	}
+	free(tmp);
+}
+
+void	ft_textures(t_maps *maps, char *newline)
+{
+	char *tmp;
+	int i;
+
+	i = 0;
+	if(newline[i] == 'N')
+	{
+		tmp = ft_strtrim(newline, "NO \t");
+			maps->NO = tmp;
+		free(tmp);
+	}
+	// else if(newline[i] == 'E')
+	// {
+	// 	tmp = ft_strtrim(newline, "EA \t");
+	// 		maps->EA = tmp;
+	// 	free(tmp);
+	// }
+	
 }
 
 void	ft_parsemap(t_maps *maps, char *newline)
 {
     int i;
     int fd;
-    char *tmp;
-	char **tmp1;
-
+	char *tmp1;
+	
 	i = 0;
-	maps->resx = 0;
-	maps->resy = 0;
+
     fd = open("maps.cub", O_RDONLY);
     while (gnl(fd, &newline))
-    {	
-        if (newline[i] == 'R')
-        {
-            tmp = ft_strtrim(newline, "R\t ");
-            while(tmp[i] >= '0' && tmp[i] <= '9')
-            {
-                maps->resx = (maps->resx * 10) + (tmp[i] - 48);
-                i++;
-            }
-			while(tmp[i] == '\t' || tmp[i] == ' ')
-				i++;
-			while(tmp[i] >= '0' && tmp[i] <= '9')
-			{
-				maps->resy = (maps->resy * 10) + (tmp[i] - 48);
-               	i++;
-			}
-			free(tmp);
-        }
+    {
+		tmp1 = newline;
+		if (tmp1[i] == 'R')
+			ft_res(tmp1, maps);
+		else if (tmp1[i] == 'N')
+			ft_textures(maps, tmp1);
+		// // else if (tmp1[i] == 'E')
+		// // 	ft_textures(maps, tmp1, i);
     }
-	if(newline)
-		tmp1 = ft_split(newline, '\n');
-	printf("%s\n", tmp1[0][1]);
 }
-
-
-// void	texture(t_maps *t_maps, char *newline)
-// {
-// 	char **tmp;
-
-// }
-
 
 
 int main()
@@ -98,7 +125,6 @@ int main()
 	t_maps maps;
 	char *newline;
 	ft_parsemap(&maps, newline);
-	// texture(&maps, newline);
-	printf("resx %d\nresy %d\n", maps.resx, maps.resy);
+	printf("resx %d\nresy %d\n NO %s", maps.resx, maps.resy, maps.NO);
 	return 0;
 }
