@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/04/30 15:28:32 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/04/30 17:41:13 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef struct s_maps
 	int resy;
 	char *NO;
 	char *SO;
-	char *S;
 	char *EA;
+	char *WE;
 }              t_maps;
 
 /*typedef struct s_pos{
