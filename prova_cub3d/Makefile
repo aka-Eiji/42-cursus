@@ -4,9 +4,9 @@ LIBFT_DIR = libft/
 
 LIBFT = libft.a
 
-MAP = $(INCLUDE)/maps/maps.cub
+MAP = maps.cub
 
-SRC = maps/parsingmap.c maps/gnl.c maps/textures.c maps/colors.c \
+SRC = maps/parsingmap.c maps/gnl.c maps/pars_textures.c maps/pars_colors.c maps/window.c maps/main.c\
 
 INCLUDE = include
 
@@ -21,8 +21,6 @@ HEADER = cub3d.h
 FLAGS = -Wall -Wextra -Werror
 
 MLX_F = -lmlx -framework OpenGL -framework AppKit
-
-HEADER = cub3d.h
 
 FILE = $(addprefix include/, $(SRC))
 

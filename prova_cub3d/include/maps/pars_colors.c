@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   pars_colors.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:04:42 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/04 14:06:11 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/04 17:22:08 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//Norminettato!!
+
 #include "../../cub3d.h"
 
-int			ft_create_rgb(int t, int r, int g, int b)
+int	ft_create_rgb(int t, int r, int g, int b)
 {
-	return(t << 24 | r << 16 | g << 8| b); 
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-int			ft_check_virg(int i, char *newline)
+int	ft_check_virg(int i, char *newline)
 {
 	if (newline[i] == ',' || newline[i] == ' ')
 	{
 		i++;
-		return(i);
+		return (i);
 	}
-	return(i);
+	return (i);
 }
 
-void		ft_check_rgb(int i, char *newline, t_maps *maps)
+void	ft_check_rgb(int i, char *newline, t_maps *maps)
 {
 	while (newline[i] != '\0')
 	{
@@ -36,6 +38,7 @@ void		ft_check_rgb(int i, char *newline, t_maps *maps)
 			maps->red = (maps->red * 10) + (newline[i] - 48);
 			i++;
 			ft_check_virg(i, newline);
+			
 		}
 		while (newline[i] >= '0' && newline[i] <= '9' && i < 6)
 		{
@@ -53,7 +56,7 @@ void		ft_check_rgb(int i, char *newline, t_maps *maps)
 	}
 }
 
-void		ft_colors(char *newline, t_maps *maps)
+void	ft_colors(char *newline, t_maps *maps)
 {
 	char	*tmp;
 	int		i;
@@ -63,15 +66,15 @@ void		ft_colors(char *newline, t_maps *maps)
 	maps->blue = 0;
 	i = 0;
 	tmp = newline;
-	while(tmp[i] != '\0')
+	while (tmp[i] != '\0')
 	{
-		if(tmp[i] == 'F')
-		{	
+		if (tmp[i] == 'F')
+		{
 			tmp = ft_strtrim(newline, "F\t ");
 			ft_check_rgb(i, tmp, maps);
 			maps->F = ft_create_rgb(0, maps->red, maps->green, maps->blue);
 		}
-		else if(tmp[i] == 'C')
+		else if (tmp[i] == 'C')
 		{
 			tmp = ft_strtrim(newline, "C\t ");
 			ft_check_rgb(i, tmp, maps);
