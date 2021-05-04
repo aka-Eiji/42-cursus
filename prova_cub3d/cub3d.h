@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/04 13:42:39 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/04 14:14:20 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct s_maps
 	char	*S;
 	int		F;
 	int		C;
-	int		t;
 	int		red;
 	int		green;
 	int		blue;
@@ -91,3 +90,13 @@ typedef struct s_all{
 	t_maps maps; 					// mancano i nomi
 	t_coord coord;
 }              t_all;
+
+int			ft_create_rgb(int t, int r, int g, int b);
+int			ft_check_virg(int i, char *newline);
+void		ft_check_rgb(int i, char *newline, t_maps *maps);
+void		ft_colors(char *newline, t_maps *maps);
+char		*charjoin(char *s, char c, int max);
+int			gnl(int fd, char **line);
+void		ft_textures(t_maps *maps, char *newline);
+void		ft_parsemap(t_maps *maps, char *newline);
+void		ft_res(char *newline, t_maps *maps);

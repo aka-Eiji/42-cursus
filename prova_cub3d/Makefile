@@ -6,7 +6,7 @@ LIBFT = libft.a
 
 MAP = $(INCLUDE)/maps/maps.cub
 
-SRC = maps/parsingmap.c \
+SRC = maps/parsingmap.c maps/gnl.c maps/textures.c maps/colors.c \
 
 INCLUDE = include
 
