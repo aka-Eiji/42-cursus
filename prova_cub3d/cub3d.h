@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/03 16:41:05 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/04 11:09:47 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_maps
 	char	*EA;
 	char	*WE;
 	char	*S;
+	int		F;
+	int		C;
 	int		red;
 	int		green;
 	int		blue;

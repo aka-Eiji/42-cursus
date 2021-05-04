@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:09:08 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/03 17:41:19 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/04 12:10:35 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,33 +45,82 @@ int gnl(int fd, char **line)
 	if (i)
 		return (1);
 	return (0);
-	
+}
+
+int			ft_create_rgb(int r, int g, int b)
+{
+	return(r << 16 | g << 8| b);
+}
+
+int			ft_check_virg(int i, char *newline)
+{
+	if (newline[i] == ',')
+	{
+		i++;
+		return(i);
+	}
+	return(i);
+}
+
+void		ft_check_rgb(int i, char *newline, t_maps *maps)
+{
+	maps->red = 0;
+	maps->green = 0;
+	maps->blue = 0;
+	while (newline[i] != '\0')
+	{
+		while (newline[i] >= '0' && newline[i] <= '9' && i <= 3)
+		{
+			maps->red = (maps->red * 10) + (newline[i] - 48);
+			i++;
+			ft_check_virg(i, newline);
+		}
+		while (newline[i] >= '0' && newline[i] <= '9' && i <= 6)
+		{
+			maps->green = (maps->green * 10) + (newline[i] - 48);
+			i++;
+			ft_check_virg(i, newline);
+		}
+		while (newline[i] >= '0' && newline[i] <= '9' && i >= 6)
+		{
+			maps->blue = (maps->blue * 10) + (newline[i] - 48);
+			i++;
+			ft_check_virg(i, newline);
+		}
+		i++;
+	}
 }
 
 void		ft_colors(char *newline, t_maps *maps)
 {
 	char	*tmp;
 	int		i;
-	int		len;
-
+	
 	i = 0;
-	tmp = ft_strtrim(newline, "F \t");
-	len = ft_strlen(tmp);
-	while(i < len)
+	tmp = newline;
+	// tmp = ft_strtrim(newline, "FC\t ");
+	while(tmp[i] != '\0')
 	{
-		if (tmp[i] == ',')
-		{
-			i++;
-			break;
+		if(tmp[i] == 'F')
+		{	
+			tmp = ft_strtrim(newline, "F\t ");
+			ft_check_rgb(i, tmp, maps);
+			printf("Floor %s\n", tmp);
+			// maps->F = ft_create_rgb(maps->red, maps->green, maps->blue);
 		}
-		while (tmp[i] >= '0' && tmp[i] <= '9')
-		{
-			maps->red = (maps->red * 10) + (tmp[i] - 48);
-			i++;
-		}
+		// printf("red out %d\n", maps->red);
+		// if(tmp[i] == 'C')
+		// {
+		// 	tmp = ft_strtrim(newline, "C\t ");
+		// 	ft_check_rgb(i, tmp, maps);
+		// 	printf("Ceilling %s\n", tmp);
+		// 	// maps->C = ft_create_rgb(maps->red, maps->green, maps->blue);
+		// }
+		// printf("red out1 %d\n", maps->red);
 		i++;
 	}
 }
+
 void	ft_res(char *newline, t_maps *maps)
 {
 	char *tmp;
@@ -158,6 +207,8 @@ void	ft_parsemap(t_maps *maps, char *newline)
 		 	ft_textures(maps, tmp1);
 		else if (tmp1[i] == 'F')
 			ft_colors(tmp1, maps);
+		else if (tmp1[i] == 'C')
+			ft_colors2(tmp1, maps);
     }
 }
 
@@ -191,7 +242,10 @@ int main(int argc, char **argv)
 	char *newline;
 
 	ft_parsemap(&maps, newline);
-	//printf("resx %d\nresy %d\n NO %s\n SO %s\n EA %s\n WE %s\n S %s\n", maps.resx, maps.resy, maps.NO, maps.SO, maps.EA, maps.WE, maps.S);
-	printf("red %d\n", maps.red);
+	// printf("resx %d\nresy %d\n NO %s\n SO %s\n EA %s\n WE %s\n S %s\n", maps.resx, maps.resy, maps.NO, maps.SO, maps.EA, maps.WE, maps.S);
+	// printf("red %d\ngreen %d\nblue %d\n", maps.red, maps.green, maps.blue);
+	// printf("color %X\n", ft_create_rgb(maps.red, maps.green, maps.blue));
+	// printf("F %X\nC %X\n", maps.F, maps.C);
+
 	return 0;
 }
