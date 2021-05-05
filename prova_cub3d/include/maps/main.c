@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:19:30 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/05 17:51:11 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/05/05 17:53:53 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,7 @@ int  main(int argc, char **argv)
   	t_vars      vars;
     t_data      img;
 	char        *newline;
-    // char        *tmp1;
-    // char        *tmp2;
-    // int         res1;
-    // int         res2;
-
-    // tmp1 = argv[1];
-    // tmp2 = argv[2];
-    // res1 = ft_atoi(tmp1);
-    // res2 = ft_atoi(tmp2);
+    
     vars.mlx = mlx_init();
     ft_parsemap(&maps, newline);
     printf("\nRESOLUTION\n");
@@ -36,11 +28,11 @@ int  main(int argc, char **argv)
     printf("Red %d\nGreen %d\nBlue %d\n\n", maps.red, maps.green, maps.blue);
     printf("FLOOR & CEILING\n");
 	printf("Floor %X\nCeiling %X\n\n", maps.F, maps.C);
-    // if (argc != 3)
-    // {
-    //      printf("Error, insert a value please. \n");
-    //      exit (0);
-    // }
+    if (argc != 2)
+    {
+        printf("Error, insert a value please. \n");
+        exit (0);
+    }
     vars.win = mlx_new_window(vars.mlx, maps.resx, maps.resy, "Il gioco dell'anno!");
     mlx_key_hook(vars.win, key_hook, &vars);
     mlx_hook(vars.win, 17, 1L<<0, ft_close, &vars);
