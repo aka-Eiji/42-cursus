@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:19:30 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/05 17:43:28 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/05/05 17:51:11 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,12 @@ int  main(int argc, char **argv)
     // res2 = ft_atoi(tmp2);
     vars.mlx = mlx_init();
     ft_parsemap(&maps, newline);
-	printf("resx %d\nresy %d\n NO %s\n SO %s\n EA %s\n WE %s\n S %s\n", maps.resx, maps.resy, maps.NO, maps.SO, maps.EA, maps.WE, maps.S);
-    printf("red %d\ngreen %d\nblue %d\n", maps.red, maps.green, maps.blue);
-	printf("F %X\nC %X\n", maps.F, maps.C);
+    printf("\nRESOLUTION\n");
+	printf("resx %d\nresy %d\nNO %s\nSO %s\nEA %s\nWE %s\nS %s\n\n", maps.resx, maps.resy, maps.NO, maps.SO, maps.EA, maps.WE, maps.S);
+    printf("COLORS\n");
+    printf("Red %d\nGreen %d\nBlue %d\n\n", maps.red, maps.green, maps.blue);
+    printf("FLOOR & CEILING\n");
+	printf("Floor %X\nCeiling %X\n\n", maps.F, maps.C);
     // if (argc != 3)
     // {
     //      printf("Error, insert a value please. \n");
