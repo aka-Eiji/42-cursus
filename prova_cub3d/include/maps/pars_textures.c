@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:06:44 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/04 17:11:00 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/05 17:45:20 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_parsemap(t_maps *maps, char *newline)
 	char	*tmp1;
 	
 	i = 0;
-    fd = open("/Users/mmurello/Documents/42/cub3d/prova_cub3d/prova_cub3d/include/maps/maps.cub", O_RDONLY);
+    fd = open("include/maps/maps.cub", O_RDONLY);
     while (gnl(fd, &newline))
     {
 		tmp1 = newline;
@@ -97,12 +97,3 @@ void	ft_parsemap(t_maps *maps, char *newline)
     }
 	free(tmp1);
 }
-
-// int main()
-// {
-// 	char *newline;
-// 	t_maps maps;
-
-// 	ft_parsemap(&maps, newline);
-// 	printf("resx %d\n", maps.resx);
-// }
