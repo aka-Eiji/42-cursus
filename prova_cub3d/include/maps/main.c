@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:19:30 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/05 18:16:16 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/05/10 13:12:38 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,15 @@ int  main(int argc, char **argv)
 	t_maps      maps;
   	t_vars      vars;
     t_data      img;
+    t_all       *all;
+    t_coord     coord;
+    t_maps      *lol;
 	char        *newline;
-    
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
     if (argc != 2)
     {
         printf("Error, insert a value please. \n");
@@ -35,6 +42,10 @@ int  main(int argc, char **argv)
     printf("Red %d\nGreen %d\nBlue %d\n\n", maps.red, maps.green, maps.blue);
     printf("FLOOR & CEILING\n");
 	printf("Floor %X\nCeiling %X\n\n", maps.F, maps.C);
+    printf("MAPS COORDINATES\n");
+    printf("%d, %d\n", maps.mapx, maps.mapy);
+    
+
     vars.win = mlx_new_window(vars.mlx, maps.resx, maps.resy, "Il gioco dell'anno!");
     mlx_key_hook(vars.win, key_hook, &vars);
     mlx_hook(vars.win, 17, 1L<<0, ft_close, &vars);

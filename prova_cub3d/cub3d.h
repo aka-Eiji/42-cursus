@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/04 16:32:56 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/10 13:25:46 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@
 # define KEY_S			1
 # define KEY_D			2
 
+#define WINDOW_WIDTH maps.mapx
+#define WINDOW_HEIGHT maps.mapy 
+
 typedef struct  s_vars 
 {
     void    *mlx;
@@ -56,6 +59,9 @@ typedef struct s_maps
 	char	*EA;
 	char	*WE;
 	char	*S;
+	int		mapx;
+	int		mapy;
+	char 	**mtx;
 	int		F;
 	int		C;
 	int		red;
@@ -63,6 +69,12 @@ typedef struct s_maps
 	int		blue;
 	char	**map;
 }              t_maps;
+
+typedef struct s_err
+{
+	int n;
+	int m;
+}	t_err;
 
 // typedef struct s_pos{
 //    
@@ -87,9 +99,6 @@ typedef struct s_maps
 // 	int			mapx;							// casella mappa
 // 	int			mapy;
 //	char		**mtx;
-int	mapx;										// quantita' caselle orizz
-int	mapy;										// quantita' caselle vert
-char **mtx;										// caselle effettive mtx[i][j]
 // 	double 		deltadistx; 					// distanza che il raggio deve percorrere per andare da 1 lato x al successivo lato x, viceversa
 // 	double 		deltadisty;
 // 	int 		stepx;							//controllo delle componenti
@@ -103,6 +112,7 @@ typedef struct s_all{
 	t_vars vars;
 	t_maps maps; 								// mancano i nomi
 	t_coord coord;
+	t_err	err;
 }              t_all;
 
 int			ft_create_rgb(int t, int r, int g, int b);
@@ -117,5 +127,14 @@ void		ft_res(char *newline, t_maps *maps);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int			ft_close(int keycode, t_vars *vars);
 int			key_hook(int keycode, t_vars *vars);
+void 		ft_init(t_maps *maps);
+int			ft_validmap(t_maps *maps, t_all *all);
+int 		ft_count_x(t_maps *maps, char *newline);
+int 		ft_count_y(t_maps *maps, char *newline);
+
+int			ft_map(t_all *all, char *newline, int *i);
+char 		*ft_slab(t_all *all, char *newline, int *i);
+int			ft_slablen(t_all *all, char *newline);
+int			ft_trimspace(char *newline, int *i);
 
 #endif 

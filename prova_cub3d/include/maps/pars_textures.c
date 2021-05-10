@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:06:44 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/05 17:45:20 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/05/10 14:43:27 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,11 @@ void	ft_parsemap(t_maps *maps, char *newline)
     int		i;
     int		fd;
 	char	*tmp1;
+	t_all	all;
+	int 	x;
+	int		y;
 	
+	ft_init(maps);
 	i = 0;
     fd = open("include/maps/maps.cub", O_RDONLY);
     while (gnl(fd, &newline))
@@ -94,6 +98,12 @@ void	ft_parsemap(t_maps *maps, char *newline)
 		 	ft_textures(maps, tmp1);
 		else if (tmp1[i] == 'F' || tmp1[i] == 'C')
 			ft_colors(tmp1, maps);
-    }
+		else if (tmp1[i] == '1' && tmp1[i + 1] == '1')
+			x = ft_count_x(maps, tmp1);
+		if (tmp1[i] == '1' && tmp1[i + 1] != '1')
+			y = ft_count_y(maps, tmp1);
+	}
+	maps->mapx = x / 2;
+	// maps->mapy = y + 2;
 	free(tmp1);
 }
