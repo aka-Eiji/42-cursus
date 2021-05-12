@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/10 13:25:46 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/12 17:13:33 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,6 @@ int 		ft_count_y(t_maps *maps, char *newline);
 int			ft_map(t_all *all, char *newline, int *i);
 char 		*ft_slab(t_all *all, char *newline, int *i);
 int			ft_slablen(t_all *all, char *newline);
-int			ft_trimspace(char *newline, int *i);
+int			ft_jumpspace(char *newline, int i);
 
 #endif 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:06:44 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/10 14:43:27 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/12 17:19:38 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,7 @@ void	ft_parsemap(t_maps *maps, char *newline)
 		 	ft_textures(maps, tmp1);
 		else if (tmp1[i] == 'F' || tmp1[i] == 'C')
 			ft_colors(tmp1, maps);
-		else if (tmp1[i] == '1' && tmp1[i + 1] == '1')
-			x = ft_count_x(maps, tmp1);
-		if (tmp1[i] == '1' && tmp1[i + 1] != '1')
+		else if (tmp1[i] == '1' || tmp1[i] == ' ' || tmp1[i] == '\t')
 			y = ft_count_y(maps, tmp1);
 	}
 	maps->mapx = x / 2;

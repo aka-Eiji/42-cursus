@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsingmap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:09:08 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/10 14:38:42 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/12 17:36:12 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@ void ft_init(t_maps *maps)
 	maps->mapx = 0;
 	maps->mapy = 0;
 	maps->mtx = NULL;
+}
+
+int		ft_jumpspace(char *newline, int i)
+{
+	while ((newline[i] == ' ' || newline[i] == '\t' || newline[i] == '\n')
+	|| (newline[i] == '\r' || newline[i] == '\v' || newline[i] == '\f'))
+		(i)++;
+	return (i);
 }
 
 int ft_count_x(t_maps *maps, char *newline)
@@ -36,20 +44,24 @@ int ft_count_x(t_maps *maps, char *newline)
 
 int ft_count_y(t_maps *maps, char *newline)
 {
-	while(newline[0] == '1')
-	{	
+	int i;
+
+	i = 0;
+	if (newline[0] != '1')
+	{
+		i = ft_jumpspace(newline, i);
+		if (newline[i] == '1')
+		{
+			maps->mapy++;
+			newline++;
+		}
+	}
+	else if (newline[0] == '1')
+	{
 		maps->mapy++;
 		newline++;
 	}
-	return (maps->mapy);
-}
-
-int		ft_trimspace(char *newline, int *i)
-{
-	while ((newline[*i] == ' ' || newline[*i] == '\t' || newline[*i] == '\n')
-	|| (newline[*i] == '\r' || newline[*i] == '\v' || newline[*i] == '\f'))
-		(*i)++;
-	return (1);
+		return (maps->mapy);
 }
 
 int	ft_validmap(t_maps *maps, t_all *all)
@@ -78,4 +90,3 @@ int	ft_validmap(t_maps *maps, t_all *all)
 	}
 	return (1);
 }
-
