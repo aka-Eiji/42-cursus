@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/12 17:13:33 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/05/12 17:39:53 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,12 +129,7 @@ int			ft_close(int keycode, t_vars *vars);
 int			key_hook(int keycode, t_vars *vars);
 void 		ft_init(t_maps *maps);
 int			ft_validmap(t_maps *maps, t_all *all);
-int 		ft_count_x(t_maps *maps, char *newline);
 int 		ft_count_y(t_maps *maps, char *newline);
-
-int			ft_map(t_all *all, char *newline, int *i);
-char 		*ft_slab(t_all *all, char *newline, int *i);
-int			ft_slablen(t_all *all, char *newline);
 int			ft_jumpspace(char *newline, int i);
 
 #endif 

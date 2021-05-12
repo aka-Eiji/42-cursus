@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:09:08 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/12 17:36:12 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/05/12 17:39:42 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,6 @@ int		ft_jumpspace(char *newline, int i)
 	|| (newline[i] == '\r' || newline[i] == '\v' || newline[i] == '\f'))
 		(i)++;
 	return (i);
-}
-
-int ft_count_x(t_maps *maps, char *newline)
-{
-	int i;
-
-	i = 0;
-	while(newline[i] == '1' && newline[i] != '\0')
-	{	
-		
-		maps->mapx++;
-		i++;
-	}
-	maps->mapy++;
-	return (maps->mapx);
 }
 
 int ft_count_y(t_maps *maps, char *newline)
