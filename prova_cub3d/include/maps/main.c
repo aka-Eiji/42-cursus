@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:19:30 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/10 13:12:38 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/12 18:57:41 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int  main(int argc, char **argv)
 
     i = 0;
     j = 0;
-    if (argc != 2)
-    {
-        printf("Error, insert a value please. \n");
-        exit (0);
-    }
+    // if (argc != 2)
+    // {
+    //     printf("Error, insert a value please. \n");
+    //     exit (0);
+    // }
     vars.mlx = mlx_init();
     ft_parsemap(&maps, newline);
     printf("\nRESOLUTION\n");
@@ -43,7 +43,14 @@ int  main(int argc, char **argv)
     printf("FLOOR & CEILING\n");
 	printf("Floor %X\nCeiling %X\n\n", maps.F, maps.C);
     printf("MAPS COORDINATES\n");
-    printf("%d, %d\n", maps.mapx, maps.mapy);
+    printf("%d\n", maps.mapy);
+    printf("%d\n", maps.mapx);
+    while (maps.mtx)
+    {
+        printf("%s\n", &maps.mtx[j][i]);
+        i++;
+        j++;
+    }
     
 
     vars.win = mlx_new_window(vars.mlx, maps.resx, maps.resy, "Il gioco dell'anno!");

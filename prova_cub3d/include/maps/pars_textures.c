@@ -6,7 +6,11 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:06:44 by mmurello          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2021/05/12 19:22:28 by mmurello         ###   ########.fr       */
+=======
 /*   Updated: 2021/05/12 17:19:38 by jkosiara         ###   ########.fr       */
+>>>>>>> b77b1937aef969ca115759348f6a8b9eb694a2fe
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +103,14 @@ void	ft_parsemap(t_maps *maps, char *newline)
 		else if (tmp1[i] == 'F' || tmp1[i] == 'C')
 			ft_colors(tmp1, maps);
 		else if (tmp1[i] == '1' || tmp1[i] == ' ' || tmp1[i] == '\t')
+<<<<<<< HEAD
+		{
+=======
+>>>>>>> b77b1937aef969ca115759348f6a8b9eb694a2fe
 			y = ft_count_y(maps, tmp1);
+			x = ft_count_read_cells(maps, tmp1);
+		}
 	}
-	maps->mapx = x / 2;
-	// maps->mapy = y + 2;
+	printf("%d\n", x);
 	free(tmp1);
 }

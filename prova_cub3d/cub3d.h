@@ -6,7 +6,11 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2021/05/12 19:10:29 by mmurello         ###   ########.fr       */
+=======
 /*   Updated: 2021/05/12 17:39:53 by jkosiara         ###   ########.fr       */
+>>>>>>> b77b1937aef969ca115759348f6a8b9eb694a2fe
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +37,13 @@
 # define KEY_S			1
 # define KEY_D			2
 
-#define WINDOW_WIDTH maps.mapx
-#define WINDOW_HEIGHT maps.mapy 
+#define CELL_SIZE 64
+#define WINDOW_WIDTH maps->mapx * CELL_SIZE
+#define WINDOW_HEIGHT maps->mapy * CELL_SIZE
+#define NUM_ROWS maps->mapy
+#define NUM_COLS maps->mapx
+#define NUM_RAYS WINDOW_WIDTH
+#define MINIMAPS_SCALE 0.5
 
 typedef struct  s_vars 
 {
@@ -128,8 +137,17 @@ void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int			ft_close(int keycode, t_vars *vars);
 int			key_hook(int keycode, t_vars *vars);
 void 		ft_init(t_maps *maps);
+<<<<<<< HEAD
+int			ft_validmap(t_maps *maps);
+int 		ft_count_y(t_maps *maps, char *newline);
+int			ft_jumpspace(char *newline, int i);
+int			ft_check_rows(t_maps *maps, char *newline, int i);
+char		*ft_cell(t_maps *maps, char *newline);
+int			ft_count_read_cells(t_maps *maps, char *newline);
+=======
 int			ft_validmap(t_maps *maps, t_all *all);
 int 		ft_count_y(t_maps *maps, char *newline);
 int			ft_jumpspace(char *newline, int i);
+>>>>>>> b77b1937aef969ca115759348f6a8b9eb694a2fe
 
 #endif 
