@@ -6,13 +6,11 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:01:43 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/04 15:26:01 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/13 14:13:30 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-
-//Norminettato!!
 
 char	*charjoin(char *s, char c, int max)
 {

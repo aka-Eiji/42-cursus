@@ -3,16 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/05/12 19:10:29 by mmurello         ###   ########.fr       */
-=======
-/*   Updated: 2021/05/12 17:39:53 by jkosiara         ###   ########.fr       */
->>>>>>> b77b1937aef969ca115759348f6a8b9eb694a2fe
+/*   Updated: 2021/05/13 14:11:00 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -137,17 +134,13 @@ void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int			ft_close(int keycode, t_vars *vars);
 int			key_hook(int keycode, t_vars *vars);
 void 		ft_init(t_maps *maps);
-<<<<<<< HEAD
 int			ft_validmap(t_maps *maps);
 int 		ft_count_y(t_maps *maps, char *newline);
 int			ft_jumpspace(char *newline, int i);
 int			ft_check_rows(t_maps *maps, char *newline, int i);
 char		*ft_cell(t_maps *maps, char *newline);
 int			ft_count_read_cells(t_maps *maps, char *newline);
-=======
-int			ft_validmap(t_maps *maps, t_all *all);
 int 		ft_count_y(t_maps *maps, char *newline);
 int			ft_jumpspace(char *newline, int i);
->>>>>>> b77b1937aef969ca115759348f6a8b9eb694a2fe
 
 #endif 

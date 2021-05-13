@@ -3,16 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   parsingmap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:09:08 by jkosiara          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/05/12 19:53:28 by mmurello         ###   ########.fr       */
-=======
-/*   Updated: 2021/05/12 17:39:42 by jkosiara         ###   ########.fr       */
->>>>>>> b77b1937aef969ca115759348f6a8b9eb694a2fe
+/*   Updated: 2021/05/13 14:53:30 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../cub3d.h"
 
@@ -78,7 +75,6 @@ int	ft_validmap(t_maps *maps)
 		i++;
 	}
 	return (1);
-<<<<<<< HEAD
 }
 
 // int ft_check_rows(t_maps *maps, char *newline, int i)
@@ -125,21 +121,21 @@ int ft_count_read_cells(t_maps *maps, char *newline)
 	int n;
 
 	i = 0;
-	n = 0;
+	n = maps->mapx;
 	count = 0;
 	while(newline[i] != '\0')
 	{
 		if (newline[i] == '0' || newline[i] == '1' || newline[i] == '2' || newline[i] == 'W' || newline[i] == ' ')
-			count++;
+			count++;	
 		i++;
-		if (count > n)
-			n = count;
-		count = 0;
+ 
 	}
-	maps->mapx = n;
+	if (count > n)
+		maps->mapx = count;
+	else
+		maps->mapx = n;
+
 	if (maps->mapx != 0 && maps->mapx != count)
 		return (-1);
-	return (maps->mapx);
-=======
->>>>>>> b77b1937aef969ca115759348f6a8b9eb694a2fe
+	return (0);
 }
