@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:09:08 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/13 17:09:39 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/13 18:09:23 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,27 +77,6 @@ int	ft_validmap(t_maps *maps)
 	return (1);
 }
 
-// int ft_check_rows(t_maps *maps, char *newline, int i)
-// {
-// 	char **tmp;
-// 	int j;
-
-// 	if (!(tmp = malloc(sizeof(char *) * (NUM_COLS))))
-// 		return (-1);
-// 	j = -1;
-// 	while (++j < NUM_ROWS)
-// 		tmp[j] = maps->mtx[j];
-// 	if ((tmp[j] = ft_cell(maps, newline)) == NULL)
-// 		return (-1);
-// 	tmp[NUM_ROWS + 1] = NULL;
-// 	if (NUM_ROWS > 0)
-// 		free(maps->mtx);
-// 	maps->mtx = tmp;
-// 	NUM_ROWS++;
-//  if ((maps->mapx = ft_count_cells(maps, newline)) == -1)
-// 		return (-1);
-// 	return (0);
-// }
 int ft_count_cells(t_maps *maps, char *newline)
 {
 	int i;
@@ -145,3 +124,24 @@ char	*ft_cell(t_maps *maps, char *newline, int *i)
 	return (tmp);
 }
 
+// int ft_check_rows(t_maps *maps, char *newline, int i)
+// {
+// 	char **tmp;
+// 	int j;
+
+// 	if (!(tmp = malloc(sizeof(char *) * (NUM_ROWS + 1))))
+// 		return (-1);
+// 	j = -1;
+// 	while (++j < NUM_ROWS)
+// 		maps->mtx[j] = tmp[j];
+// 	if ((tmp[j] = ft_cell(maps, newline, i)) == NULL)
+// 		return (-1);
+// 	tmp[NUM_ROWS] = NULL;
+// 	if (NUM_ROWS > 0)
+// 		free(maps->mtx);
+// 	maps->mtx = tmp;
+// 	NUM_ROWS++;
+//  if ((maps->mapx = ft_count_cells(maps, newline)) == -1)
+// 		return (-1);
+// 	return (0);
+// }
