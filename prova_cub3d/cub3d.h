@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/13 16:31:30 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/13 19:27:27 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ void 		ft_init(t_maps *maps);
 int			ft_validmap(t_maps *maps);
 int 		ft_count_y(t_maps *maps, char *newline);
 int			ft_jumpspace(char *newline, int i);
-int			ft_check_rows(t_maps *maps, char *newline, int i);
+char		**ft_check_rows(t_maps *maps, char *newline, int *i);
 char		*ft_cell(t_maps *maps, char *newline, int *i);
 int			ft_count_cells(t_maps *maps, char *newline);
 int 		ft_count_y(t_maps *maps, char *newline);

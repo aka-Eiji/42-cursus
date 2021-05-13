@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:06:44 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/13 18:10:00 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/13 20:40:07 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,8 @@ void	ft_parsemap(t_maps *maps, char *newline)
     int		fd;
 	char	*tmp1;
 	t_all	all;
-	int j;
+	char **tmp_cell;
 
-
-	j = 0;
 	ft_init(maps);
 	i = 0;
     fd = open("include/maps/maps.cub", O_RDONLY);
@@ -103,11 +101,9 @@ void	ft_parsemap(t_maps *maps, char *newline)
 		else if (tmp1[0] == '1' || tmp1[0] == ' ' || tmp1[0] == '\t')
 		{
 			ft_count_y(maps, tmp1);
-			// ft_check_rows(maps, newline, &i);
-			ft_cell(maps, newline, &i);
+			// ft_cell(maps, newline, &i);
+			tmp_cell = ft_check_rows(maps, tmp1, &i);
 		}
 	}
-
-
 	free(tmp1);
 }
