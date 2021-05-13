@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:09:08 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/13 14:53:30 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/13 17:09:39 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,27 +94,11 @@ int	ft_validmap(t_maps *maps)
 // 		free(maps->mtx);
 // 	maps->mtx = tmp;
 // 	NUM_ROWS++;
-//  if ((maps->mapx = ft_count_read_cells(maps, newline)) == -1)
+//  if ((maps->mapx = ft_count_cells(maps, newline)) == -1)
 // 		return (-1);
 // 	return (0);
 // }
-
-char	*ft_cell(t_maps *maps, char *newline)
-{
-	int i;
-	char *tmp;
-	
-	i = 0;
-	while (newline[i] != '\0')
-	{
-		if (newline[i] == '0' || newline[i] == '1' || newline[i] == '2' || newline[i] == 'W')
-			tmp[i] = newline[i];
-		i++;
-	}
-	return (tmp);
-}
-
-int ft_count_read_cells(t_maps *maps, char *newline)
+int ft_count_cells(t_maps *maps, char *newline)
 {
 	int i;
 	int count;
@@ -125,7 +109,9 @@ int ft_count_read_cells(t_maps *maps, char *newline)
 	count = 0;
 	while(newline[i] != '\0')
 	{
-		if (newline[i] == '0' || newline[i] == '1' || newline[i] == '2' || newline[i] == 'W' || newline[i] == ' ')
+		if (newline[i] == '0' || newline[i] == '1' || newline[i] == '2' 
+		|| newline[i] == 'W' || newline[i] == ' ' || newline[i] == 'E'
+		|| newline[i] == 'S'|| newline[i] == 'N')
 			count++;	
 		i++;
  
@@ -137,5 +123,25 @@ int ft_count_read_cells(t_maps *maps, char *newline)
 
 	if (maps->mapx != 0 && maps->mapx != count)
 		return (-1);
-	return (0);
+	return (maps->mapx);
 }
+
+char	*ft_cell(t_maps *maps, char *newline, int *i)
+{
+	int j;
+    char *tmp;
+    if (!(tmp = malloc(sizeof(char) * (ft_count_cells(maps, newline) + 1))))
+        return NULL;
+    j = 0;
+    while (newline[*i] != '\0')
+    {
+        if (newline[*i] == '0' || newline[*i] == '1' || newline[*i] == '2' || newline[*i] == 'N')
+            tmp[j++] = newline[*i];
+        else if (newline[*i] == 'S' || newline[*i] == 'W' || newline[*i] == 'E' || newline[*i] == ' ')
+            tmp[j++] = newline[*i];
+        (*i)++;
+    }
+    tmp[j] = '\0';
+	return (tmp);
+}
+

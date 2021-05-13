@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:06:44 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/13 14:53:26 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/13 17:08:58 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	ft_parsemap(t_maps *maps, char *newline)
     int		fd;
 	char	*tmp1;
 	t_all	all;
+
 	
 	ft_init(maps);
 	i = 0;
@@ -100,8 +101,10 @@ void	ft_parsemap(t_maps *maps, char *newline)
 		else if (tmp1[i] == '1' || tmp1[i] == ' ' || tmp1[i] == '\t')
 		{
 			ft_count_y(maps, tmp1);
-			ft_count_read_cells(maps, tmp1);
+			ft_cell(maps, newline, &i);
 		}
 	}
+
+
 	free(tmp1);
 }

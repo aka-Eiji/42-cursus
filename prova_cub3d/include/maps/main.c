@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:19:30 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/12 18:57:41 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/13 15:13:33 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,14 @@ int  main(int argc, char **argv)
     printf("MAPS COORDINATES\n");
     printf("%d\n", maps.mapy);
     printf("%d\n", maps.mapx);
-    while (maps.mtx)
-    {
-        printf("%s\n", &maps.mtx[j][i]);
-        i++;
-        j++;
-    }
+    
+    // while (maps.mtx)
+    // {
+    //     printf("ciao");
+    //     // printf("%s\n", &maps.mtx[j][i]);
+    //     // i++;
+    //     // j++;
+    // }
     
 
     vars.win = mlx_new_window(vars.mlx, maps.resx, maps.resy, "Il gioco dell'anno!");

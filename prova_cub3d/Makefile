@@ -14,7 +14,7 @@ OBJS = $(FILE:.c=.o)
 
 MLX = libmlx.dylib
 
-CC = gcc
+CC = gcc -g
 
 HEADER = cub3d.h
 
