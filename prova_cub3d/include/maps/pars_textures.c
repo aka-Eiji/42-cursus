@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:06:44 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/14 17:39:43 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/05/14 19:23:23 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,10 @@ void	ft_parsemap(t_maps *maps, char *newline)
 		else if (tmp1[0] == '1' || tmp1[0] == ' ' || tmp1[0] == '\t')
 		{
 			ft_count_y(maps, tmp1);
+			ft_count_cells(maps, tmp1);
+			tmp_cell = ft_check_rows(maps);
+			printf("tmp %p %s\n ", tmp_cell, *tmp_cell);
 			//ft_cell(maps, newline, &i);
-			tmp_cell = ft_check_rows(maps, tmp1, &i);	
 		}
 	}
 	free(tmp1);
