@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:19:30 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/14 17:17:03 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/05/14 17:31:37 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int  main(int argc, char **argv)
     printf("FLOOR & CEILING\n");
 	printf("Floor %X\nCeiling %X\n\n", maps.F, maps.C);
     printf("MAPS COORDINATES\n");
-    printf("%d\n", maps.mapy);
-    printf("%d\n", maps.mapx);
+    printf("Y %d\n", maps.mapy);
+    printf("X %d\n", maps.mapx);
     vars.win = mlx_new_window(vars.mlx, maps.resx, maps.resy, "Cub3D");
     mlx_key_hook(vars.win, key_hook, &vars);
     mlx_hook(vars.win, 17, 1L<<0, ft_close, &vars);

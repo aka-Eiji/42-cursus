@@ -1,4 +1,4 @@
-R	1280   720
+R	4000   3000
 NO ./textures/mossy.xpm
 SO ./textures/redbrick.xpm
 EA ./textures/stone.xpm
