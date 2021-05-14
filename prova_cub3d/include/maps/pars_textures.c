@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:06:44 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/14 17:28:23 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/05/14 17:39:43 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,10 @@ void	ft_res(char *newline, t_maps *maps)
 		maps->resy = (maps->resy * 10) + (tmp[i] - 48);
     	i++;
 	}
-	if (maps->resx > 2560 && maps->resy > 1440)
-	{
+	if (maps->resx > 2560)
 		maps->resx = resmaxx;
-		maps->resy = resmaxy;
-	}
+	if (maps->resy > 1440)
+		maps->resy = resmaxy; 
 	free(tmp);
 }
 
