@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:19:30 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/13 20:41:49 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/14 17:17:03 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,7 @@ int  main(int argc, char **argv)
     printf("MAPS COORDINATES\n");
     printf("%d\n", maps.mapy);
     printf("%d\n", maps.mapx);
-    
-       
-    
-
-    vars.win = mlx_new_window(vars.mlx, maps.resx, maps.resy, "Il gioco dell'anno!");
+    vars.win = mlx_new_window(vars.mlx, maps.resx, maps.resy, "Cub3D");
     mlx_key_hook(vars.win, key_hook, &vars);
     mlx_hook(vars.win, 17, 1L<<0, ft_close, &vars);
     mlx_loop(vars.mlx);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:06:44 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/13 20:40:07 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/14 17:25:37 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	ft_res(char *newline, t_maps *maps)
 	int		i;
 
 	i = 0;
+	int resmaxx;
+	int resmaxy;
+
+	resmaxx = 2560;
+	resmaxy = 1440;
 	maps->resx = 0;
 	maps->resy = 0;
 	tmp = ft_strtrim(newline, "R\t ");
@@ -27,14 +32,17 @@ void	ft_res(char *newline, t_maps *maps)
 		maps->resx = (maps->resx * 10) + (tmp[i] - 48);
 		i++;
 	}
-/*manca l'impostazione della risoluzione massima fissata a (2560 x 1440) anche se maps->resx > 2560 || maps-> resy > 1440*/
-
 	while (tmp[i] == '\t' || tmp[i] == ' ')
 		i++;
 	while (tmp[i] >= '0' && tmp[i] <= '9')
 	{
 		maps->resy = (maps->resy * 10) + (tmp[i] - 48);
     	i++;
+	}
+	if (maps->resx > 2560 && maps->resy > 1440)
+	{
+		maps->resx = resmaxx;
+		maps->resy = resmaxy;
 	}
 	free(tmp);
 }
@@ -101,8 +109,8 @@ void	ft_parsemap(t_maps *maps, char *newline)
 		else if (tmp1[0] == '1' || tmp1[0] == ' ' || tmp1[0] == '\t')
 		{
 			ft_count_y(maps, tmp1);
-			// ft_cell(maps, newline, &i);
-			tmp_cell = ft_check_rows(maps, tmp1, &i);
+			//ft_cell(maps, newline, &i);
+			tmp_cell = ft_check_rows(maps, tmp1, &i);	
 		}
 	}
 	free(tmp1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:20:42 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/04 16:25:26 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/14 17:14:57 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void            my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int             ft_close(int keycode, t_vars *vars)
 {
+    t_maps *all;
     /*mlx_destroy_window(vars->mlx, vars->win);*/
     printf("Game closed, thanks for playing!\n");
     exit(0);
