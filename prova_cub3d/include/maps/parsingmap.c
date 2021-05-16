@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:09:08 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/16 17:47:42 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/16 18:27:10 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,3 +92,15 @@ void	free_matrix(char **matrix)
 	}
 	free(matrix);
 }
+
+// int		ft_errors(int r)
+// {
+// 	t_vars *vars;
+// 	if (r == -1)
+// 	{
+// 		mlx_destroy_window(vars->mlx, vars->win);
+// 		exit(0);
+// 	}
+
+// 	return (-1);
+// }
