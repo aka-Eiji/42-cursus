@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:06:44 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/16 17:43:33 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/16 17:52:54 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ char	**ft_write_map(char *newline, int *my, int *mx, char **tb)
 	}
 	tb[i] = ft_strdup(newline);
 	tb[i + 1] = 0;
-//	free_matrix(temp);
+	free_matrix(temp);
 	if (ft_strlen(newline) > *mx)
 		*mx = ft_strlen(newline);
 	return (tb);
@@ -131,11 +131,20 @@ void	ft_parsemap(t_maps *maps, char *newline)
 		else if (newline[0] == '1' || newline[0] == ' ' || newline[0] == '\t')
 			tmp_cell = ft_write_map(newline, &maps->mapy, &maps->mapx, tmp_cell);	
 	}
-	i = 0;
-	while (i < maps->mapy)
-	{
-		printf("tmp %p %s\n", tmp_cell[i], tmp_cell[i]);
-		i++;
-	}
+	maps->mtx = tmp_cell;
+	if (ft_validmap(maps) != 1)
+		printf("Errore mappa\n");
+	// i = 0;
+	// while (i < maps->mapy)
+	// {
+	// 	printf("tmp %p %s\n", tmp_cell[i], tmp_cell[i]);
+	// 	i++;
+	// }
+	// 	i = 0;
+	// while (i < maps->mapy)
+	// {
+	// 	printf("mtx %p %s\n", maps->mtx[i], maps->mtx[i]);
+	// 	i++;
+	// }
 	free(newline);
 }
