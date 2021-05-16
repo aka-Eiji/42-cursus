@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/16 15:18:49 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/16 17:41:38 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,14 +135,9 @@ int			ft_close(int keycode, t_vars *vars);
 int			key_hook(int keycode, t_vars *vars);
 void 		ft_init(t_maps *maps);
 int			ft_validmap(t_maps *maps);
-int 		ft_count_y(t_maps *maps, char *newline);
-char		*ft_cell(t_maps *maps, char *newline, int *i);
-int			ft_count_cells(t_maps *maps, char *newline);
-int 		ft_count_y(t_maps *maps, char *newline);
 int			ft_jumpspace(int c);
 void		free_matrix(char **matrix);
-static char		**ft_malloc_map(t_maps *maps);
-static char		**fill_map(char *newline, char **map, t_maps *maps);
+char		**ft_write_map(char *newline, int *my, int *mx, char **tb);
 
 
 #endif 
