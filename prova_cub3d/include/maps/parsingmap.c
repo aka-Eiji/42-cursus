@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsingmap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:09:08 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/14 19:27:05 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/05/16 14:02:26 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int ft_count_cells(t_maps *maps, char *newline)
 	count = 0;
 	while(newline[i] != '\0')
 	{
-		if (!(ft_jumpspace(newline[i])))
+		if (!ft_jumpspace(newline[i]))
 			count++;
 		i++;
 	}
@@ -124,29 +124,3 @@ void	free_matrix(char **matrix)
 
 	free(matrix);
 }
-
-char **ft_check_rows(t_maps *maps)
-{
-	char **tmp;
-	int j;
-
-	tmp = malloc(sizeof(char *) * (maps->mapy + 1));
-	if (tmp == NULL)
-		return ("error");
-	ft_bzero(tmp, sizeof(char *) * (maps->mapy + 1));
-	j = 0;
-	while (j < maps->mapy - 1)
-	{
-		tmp[j] = malloc(sizeof(char *) * (maps->mapx + 1));
-		// tmp[j] = maps->mtx[j];
-		ft_bzero(tmp[j], sizeof(char *) * (maps->mapx + 1));
-		j++;
-	}
-	// tmp[j] = ft_cell(maps, newline, i);
-	// tmp[j + 1] = 0;
-//	if (maps->mapy > 1)
-//		free_matrix(maps->mtx);
-	// maps->mtx = &tmp;
-	return (tmp);
-}
-

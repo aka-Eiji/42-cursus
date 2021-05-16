@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/14 19:27:11 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/05/16 15:18:49 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,9 @@ char		*ft_cell(t_maps *maps, char *newline, int *i);
 int			ft_count_cells(t_maps *maps, char *newline);
 int 		ft_count_y(t_maps *maps, char *newline);
 int			ft_jumpspace(int c);
-char 		**ft_check_rows(t_maps *maps);
+void		free_matrix(char **matrix);
+static char		**ft_malloc_map(t_maps *maps);
+static char		**fill_map(char *newline, char **map, t_maps *maps);
 
 
 #endif 
