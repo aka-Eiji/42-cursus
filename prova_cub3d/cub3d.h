@@ -34,7 +34,7 @@
 # define KEY_S			1
 # define KEY_D			2
 
-#define CELL_SIZE 64
+#define CELL_SIZE 9
 #define WINDOW_WIDTH maps->mapx * CELL_SIZE
 #define WINDOW_HEIGHT maps->mapy * CELL_SIZE
 #define NUM_ROWS maps->mapy
@@ -138,7 +138,6 @@ int			ft_validmap(t_maps *maps);
 int			ft_jumpspace(int c);
 void		free_matrix(char **matrix);
 char		**ft_write_map(char *newline, int *my, int *mx, char **tb);
-int			ft_errors(int r);
 
 
 #endif 

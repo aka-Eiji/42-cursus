@@ -12,6 +12,45 @@
 
 #include "../../cub3d.h"
 
+void    my_pixel_put(t_vars *vars, t_maps *maps, int i, int j)
+{
+    int     x;
+    int     y;
+
+    y = 0;
+    while (y < CELL_SIZE)
+    {
+        x = 0;
+        while (x < CELL_SIZE)
+        {
+            if (maps->mtx[j][i] == '1')
+                mlx_pixel_put(vars->mlx, vars->win, ((i * CELL_SIZE) + y), ((j * CELL_SIZE) + x), 0x00FFD1DC);
+            else if (maps->mtx[j][i] == '0')
+                mlx_pixel_put(vars->mlx, vars->win, ((i * CELL_SIZE) + y), ((j * CELL_SIZE) + x), 0x00FFFFFF);
+            x++;
+        }
+        y++;
+    }
+}
+
+void    ft_draw_map(t_vars *vars, t_maps *maps)
+{
+    int     i;
+    int     j;
+
+    i = 0;
+    while (i < maps->mapy)
+    {
+        j = 0;
+        while (j < ft_strlen(maps->mtx[i]))
+        {
+            my_pixel_put(vars, maps, j, i);
+            j++;
+        }
+        i++;
+    }
+}
+
 
 int  main(int argc, char **argv)
 {
@@ -45,6 +84,7 @@ int  main(int argc, char **argv)
     printf("Y %d\n", maps.mapy);
     printf("X %d\n", maps.mapx);
     vars.win = mlx_new_window(vars.mlx, maps.resx, maps.resy, "Cub3D");
+    ft_draw_map(&vars, &maps);
     mlx_key_hook(vars.win, key_hook, &vars);
     mlx_hook(vars.win, 17, 1L<<0, ft_close, &vars);
     mlx_loop(vars.mlx);

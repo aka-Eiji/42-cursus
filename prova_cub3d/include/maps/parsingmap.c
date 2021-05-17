@@ -40,13 +40,13 @@ int	ft_validmap(t_maps *maps)
 		j = 0;
 		while (j < NUM_COLS)
 		{
-			if (maps->mtx[i][j] != '1' && i == 0)
+			if ((ft_jumpspace(maps->mtx[i][j])) != '1' && i == 0)
 				return (-1);
-			else if (maps->mtx[i][j] != '1' && i == (NUM_ROWS - 1))
+			else if ((ft_jumpspace(maps->mtx[i][j])) != '1' && i == (NUM_ROWS - 1))
 				return (-1);
-			else if (maps->mtx[i][j] != '1' && j == 0)
+			else if ((ft_jumpspace(maps->mtx[i][j])) != '1' && j == 0)
 				return (-1);
-			else if (maps->mtx[i][j] != '1' && j == (NUM_COLS - 1))
+			else if ((ft_jumpspace(maps->mtx[i][j])) != '1' && j == (NUM_COLS - 1))
 				return (-1);
 			j++;
 		}
@@ -92,15 +92,3 @@ void	free_matrix(char **matrix)
 	}
 	free(matrix);
 }
-
-// int		ft_errors(int r)
-// {
-// 	t_vars *vars;
-// 	if (r == -1)
-// 	{
-// 		mlx_destroy_window(vars->mlx, vars->win);
-// 		exit(0);
-// 	}
-
-// 	return (-1);
-// }

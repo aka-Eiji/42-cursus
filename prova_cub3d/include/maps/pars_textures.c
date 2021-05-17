@@ -131,8 +131,10 @@ int		ft_parsemap(t_maps *maps, char *newline)
 			tmp_cell = ft_write_map(newline, &maps->mapy, &maps->mapx, tmp_cell);	
 	}
 	maps->mtx = tmp_cell;
-	// i = ft_validmap(maps);
-	// ft_errors(i);
+	// free_matrix(tmp_cell);
+	i = 0;
+	if (ft_validmap(maps) != 1)
+		printf("ERRORE!!!!!!!!!!!!\n\n\n\n\n\n");
 
 	// i = 0;
 	// while (i < maps->mapy)
