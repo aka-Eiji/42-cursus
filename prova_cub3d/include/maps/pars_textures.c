@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:06:44 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/16 18:27:06 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/18 16:43:27 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ int		ft_parsemap(t_maps *maps, char *newline)
     int		i;
     int		fd;
 	char 	**tmp_cell;
+	t_pos	pos;
+	t_all	*all;
 
 	tmp_cell = malloc(sizeof(*tmp_cell));
 	tmp_cell[0] = 0;
@@ -131,6 +133,13 @@ int		ft_parsemap(t_maps *maps, char *newline)
 			tmp_cell = ft_write_map(newline, &maps->mapy, &maps->mapx, tmp_cell);	
 	}
 	maps->mtx = tmp_cell;
+	pos = ft_pos(maps);
+	printf("PosY %f\n", pos.posY);
+    printf("PosX %f\n", pos.posX);
+	printf("dirY %f\n", pos.dirY);
+    printf("dirX %f\n", pos.dirX);
+
+
 	// free_matrix(tmp_cell);
 	i = 0;
 	if (ft_validmap(maps) != 1)

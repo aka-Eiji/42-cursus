@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:09:08 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/16 18:27:10 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/18 16:07:38 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ int	ft_validmap(t_maps *maps)
 	while (i < NUM_ROWS)
 	{
 		j = 0;
-		while (j < NUM_COLS)
+		while (j < ft_strlen(maps->mtx[i]))
 		{
-			if ((ft_jumpspace(maps->mtx[i][j])) != '1' && i == 0)
+			if ((maps->mtx[i][j] != '1' && maps->mtx[i][j] != ' ') && i == 0)
 				return (-1);
-			else if ((ft_jumpspace(maps->mtx[i][j])) != '1' && i == (NUM_ROWS - 1))
+			else if ((maps->mtx[i][j] != '1' && maps->mtx[i][j] != ' ') && i == (NUM_ROWS - 1))
 				return (-1);
-			else if ((ft_jumpspace(maps->mtx[i][j])) != '1' && j == 0)
+			else if ((maps->mtx[i][j] != '1' && maps->mtx[i][j] != ' ') && j == 0)
 				return (-1);
-			else if ((ft_jumpspace(maps->mtx[i][j])) != '1' && j == (NUM_COLS - 1))
+			else if ((maps->mtx[i][j] != '1' && maps->mtx[i][j] != ' ') && j == (ft_strlen(maps->mtx[i]) - 1))
 				return (-1);
 			j++;
 		}
@@ -54,6 +54,8 @@ int	ft_validmap(t_maps *maps)
 	}
 	return (1);
 }
+
+
 
 // int ft_count_cells(t_maps *maps, char *newline)
 // {

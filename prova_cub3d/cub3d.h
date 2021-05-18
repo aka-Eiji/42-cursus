@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/16 18:26:44 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/18 16:38:57 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,13 @@ typedef struct s_err
 	int m;
 }	t_err;
 
-// typedef struct s_pos{
-//    
-// }              t_pos;
+typedef struct s_pos
+{
+	double	posX;
+	double	posY;
+	double	dirX;
+	double	dirY;
+}              t_pos;
 
 // typedef struct s_list
 // {
@@ -119,6 +123,7 @@ typedef struct s_all{
 	t_maps maps; 								// mancano i nomi
 	t_coord coord;
 	t_err	err;
+	t_pos	pos;
 }              t_all;
 
 int			ft_create_rgb(int t, int r, int g, int b);
@@ -138,6 +143,8 @@ int			ft_validmap(t_maps *maps);
 int			ft_jumpspace(int c);
 void		free_matrix(char **matrix);
 char		**ft_write_map(char *newline, int *my, int *mx, char **tb);
-
+void	    my_pixel_put(t_vars *vars, t_maps *maps, int i, int j);
+void	    ft_draw_map(t_vars *vars, t_maps *maps);
+t_pos		ft_pos(t_maps *maps);
 
 #endif 
