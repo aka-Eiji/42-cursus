@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 13:43:42 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/18 16:42:07 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/19 17:07:22 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,17 @@ void    ft_draw_map(t_vars *vars, t_maps *maps)
     }
 }
 
-t_pos	ft_pos(t_maps *maps)
+void	ft_pos(t_maps *maps, t_pos *pos)
 {
 	char	c;
 	int		i;
 	int		j;
-	t_pos	pos;
 
 	i = -1;
-	pos.posX = 0;
-	pos.posY = 0;
-	pos.dirX = 0;
-	pos.dirY = 0;
+	pos->posX = 0;
+	pos->posY = 0;
+	pos->dirX = 0;
+	pos->dirY = 0;
 	while (++i < maps->mapy)
 	{
 		j = -1;
@@ -71,14 +70,13 @@ t_pos	ft_pos(t_maps *maps)
 			c = maps->mtx[i][j];
 			if (c == 'N' || c == 'E' || c == 'S' || c == 'W')
 			{
-				pos.posX = (double)j + 0.5;
-				pos.posY = (double)i + 0.5;
-				pos.dirX = (c == 'E') || (c == 'W') ? 1 : 0;
-				pos.dirX *= (c == 'W') ? -1 : 1;
-				pos.dirY = (c == 'S') || (c == 'N') ? 1 : 0;
-				pos.dirY *= (c == 'N') ? -1 : 1;
+				pos->posX = (double)j + 0.5;
+				pos->posY = (double)i + 0.5;
+				pos->dirX = (c == 'E') || (c == 'W') ? 1 : 0;
+				pos->dirX *= (c == 'W') ? -1 : 1;
+				pos->dirY = (c == 'S') || (c == 'N') ? 1 : 0;
+				pos->dirY *= (c == 'N') ? -1 : 1;
 			}
 		}
 	}
-	return (pos);
 }

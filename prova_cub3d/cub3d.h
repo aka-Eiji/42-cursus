@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/18 16:38:57 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/19 17:07:41 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void		ft_colors(char *newline, t_maps *maps);
 char		*charjoin(char *s, char c, int max);
 int			gnl(int fd, char **line);
 void		ft_textures(t_maps *maps, char *newline);
-int			ft_parsemap(t_maps *maps, char *newline);
+int			ft_parsemap(t_all *all, char *newline);
 void		ft_res(char *newline, t_maps *maps);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int			ft_close(int keycode, t_vars *vars);
@@ -145,6 +145,6 @@ void		free_matrix(char **matrix);
 char		**ft_write_map(char *newline, int *my, int *mx, char **tb);
 void	    my_pixel_put(t_vars *vars, t_maps *maps, int i, int j);
 void	    ft_draw_map(t_vars *vars, t_maps *maps);
-t_pos		ft_pos(t_maps *maps);
+void	ft_pos(t_maps *maps, t_pos *pos);
 
 #endif 

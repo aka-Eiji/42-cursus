@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:06:44 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/18 16:43:27 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/19 17:07:34 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,41 +109,39 @@ char	**ft_write_map(char *newline, int *my, int *mx, char **tb)
 	return (tb);
 }
 
-int		ft_parsemap(t_maps *maps, char *newline)
+int		ft_parsemap(t_all *all, char *newline)
 {
     int		i;
     int		fd;
 	char 	**tmp_cell;
-	t_pos	pos;
-	t_all	*all;
 
 	tmp_cell = malloc(sizeof(*tmp_cell));
 	tmp_cell[0] = 0;
-	ft_init(maps);
+	ft_init(&all->maps);
     fd = open("include/maps/maps.cub", O_RDONLY);
     while (gnl(fd, &newline))
     {
 		if (newline[0] == 'R')
-			ft_res(newline, maps); 
+			ft_res(newline, &all->maps); 
 		else if (newline[0] == 'N' || newline[0] == 'S' || newline[0] == 'W' || newline[0] == 'E')
-			ft_textures(maps, newline);
+			ft_textures(&all->maps, newline);
 		else if (newline[0] == 'F' || newline[0] == 'C')
-			ft_colors(newline, maps);
+			ft_colors(newline, &all->maps);
 		else if (newline[0] == '1' || newline[0] == ' ' || newline[0] == '\t')
-			tmp_cell = ft_write_map(newline, &maps->mapy, &maps->mapx, tmp_cell);	
+			tmp_cell = ft_write_map(newline, &all->maps.mapy, &all->maps.mapx, tmp_cell);	
 	}
-	maps->mtx = tmp_cell;
-	pos = ft_pos(maps);
-	printf("PosY %f\n", pos.posY);
-    printf("PosX %f\n", pos.posX);
-	printf("dirY %f\n", pos.dirY);
-    printf("dirX %f\n", pos.dirX);
+	all->maps.mtx = tmp_cell;
+	ft_pos(&all->maps, &all->pos);
+	printf("PosY %f\n", all->pos.posY);
+    printf("PosX %f\n", all->pos.posX);
+	printf("dirY %f\n", all->pos.dirY);
+    printf("dirX %f\n", all->pos.dirX);
 
 
 	// free_matrix(tmp_cell);
 	i = 0;
-	if (ft_validmap(maps) != 1)
-		printf("ERRORE!!!!!!!!!!!!\n\n\n\n\n\n");
+	// if (ft_validmap(maps) != 1)
+	// 	printf("ERRORE!!!!!!!!!!!!\n\n\n\n\n\n");
 
 	// i = 0;
 	// while (i < maps->mapy)
