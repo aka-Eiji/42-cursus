@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:19:30 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/19 17:15:25 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/20 19:22:07 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int  main(int argc, char **argv)
 {
-  	t_vars      vars;
-    t_data      img;
+  	// t_vars      vars;
+    // t_data      img;
     t_all       all;
 	char        *newline;
     int i;
@@ -27,7 +27,7 @@ int  main(int argc, char **argv)
     //     printf("Error, insert a value please. \n");
     //     exit (0);
     // }
-    vars.mlx = mlx_init();
+    all.vars.mlx = mlx_init();
     ft_parsemap(&all, newline);
     printf("\nRESOLUTION\n");
 	printf("resx %d\nresy %d\n", all.maps.resx, all.maps.resy);
@@ -40,13 +40,15 @@ int  main(int argc, char **argv)
     printf("MAPS COORDINATES\n");
     printf("Y %d\n", all.maps.mapy);
     printf("X %d\n", all.maps.mapx);
-    printf("PosY %f\n", all.pos.posY);
-    printf("PosX %f\n", all.pos.posX);
-	printf("dirY %f\n", all.pos.dirY);
-    printf("dirX %f\n", all.pos.dirX);
-    vars.win = mlx_new_window(vars.mlx, all.maps.resx, all.maps.resy, "Cub3D");
-    ft_draw_map(&vars, &all.maps);
-    mlx_key_hook(vars.win, key_hook, &vars);
-    mlx_hook(vars.win, 17, 1L<<0, ft_close, &vars);
-    mlx_loop(vars.mlx);
+    // printf("PosY %f\n", all.player.posY);
+    // printf("PosX %f\n", all.player.posX);
+	// printf("dirY %f\n", all.player.dirY);
+    // printf("dirX %f\n", all.player.dirX);
+    all.vars.win = mlx_new_window(all.vars.mlx, all.maps.resx, all.maps.resy, "Cub3D");
+    ft_draw_map(&all.vars, &all.maps);
+    ft_raycasting(&all);
+    // draw_line(&all.player, &all.vars);
+    mlx_key_hook(all.vars.win, key_hook, &all.vars);
+    mlx_hook(all.vars.win, 17, 1L<<0, ft_close, &all.vars);
+    mlx_loop(all.vars.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:06:44 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/19 17:07:34 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/20 17:27:28 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,30 +131,27 @@ int		ft_parsemap(t_all *all, char *newline)
 			tmp_cell = ft_write_map(newline, &all->maps.mapy, &all->maps.mapx, tmp_cell);	
 	}
 	all->maps.mtx = tmp_cell;
-	ft_pos(&all->maps, &all->pos);
-	printf("PosY %f\n", all->pos.posY);
-    printf("PosX %f\n", all->pos.posX);
-	printf("dirY %f\n", all->pos.dirY);
-    printf("dirX %f\n", all->pos.dirX);
-
-
-	// free_matrix(tmp_cell);
+	//ft_fill_mtx(tmp_cell, all);
+	ft_pos(&all->maps, &all->player);
 	i = 0;
-	// if (ft_validmap(maps) != 1)
-	// 	printf("ERRORE!!!!!!!!!!!!\n\n\n\n\n\n");
-
-	// i = 0;
-	// while (i < maps->mapy)
-	// {
-	// 	printf("tmp %p %s\n", tmp_cell[i], tmp_cell[i]);
-	// 	i++;
-	// }
-	// 	i = 0;
-	// while (i < maps->mapy)
-	// {
-	// 	printf("mtx %p %s\n", maps->mtx[i], maps->mtx[i]);
-	// 	i++;
-	// }
+	if (ft_validmap(&all->maps) != 1)
+		printf("ERRORE!!!!!!!!!!!!\n\n\n\n\n\n");
 	free(newline);
 	return (0);
 }
+
+// void	ft_fill_mtx(char **tmp_cell, t_all *all)
+// {
+// 	int i;
+// 	int j;
+
+// 	i = -1;
+// 	while(tmp_cell[++i])
+// 	{
+// 		j = -1; 
+// 		while (tmp_cell[i][++j] != '\0')
+// 		{
+// 			all->maps.mtx[i][j] = tmp_cell[i][j];
+// 		}
+// 	}
+// }

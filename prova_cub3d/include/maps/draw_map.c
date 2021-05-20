@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 13:43:42 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/19 17:07:22 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/20 16:53:31 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ void    my_pixel_put(t_vars *vars, t_maps *maps, int i, int j)
                 mlx_pixel_put(vars->mlx, vars->win, ((i * CELL_SIZE) + y), ((j * CELL_SIZE) + x), 0x00FFD1DC);
             else if (maps->mtx[j][i] == '0')
                 mlx_pixel_put(vars->mlx, vars->win, ((i * CELL_SIZE) + y), ((j * CELL_SIZE) + x), 0x00FFFFFF);
+            else if (maps->mtx[j][i] == 'N' || maps->mtx[j][i] == 'S' || maps->mtx[j][i] == 'W'
+                    || maps->mtx[j][i] == 'E')
+                    mlx_pixel_put(vars->mlx, vars->win, ((i * CELL_SIZE) + y), ((j * CELL_SIZE) + x), 0x00AD099D);
+            // else if (maps->mtx[j][i] == '2')
+            //     mlx_pixel_put(vars->mlx, vars->win, ((i * CELL_SIZE) + y), ((j * CELL_SIZE) + x), 0x00FFFB7D);
             x++;
         }
         y++;
@@ -51,17 +56,14 @@ void    ft_draw_map(t_vars *vars, t_maps *maps)
     }
 }
 
-void	ft_pos(t_maps *maps, t_pos *pos)
+void	ft_pos(t_maps *maps, t_player *player)
 {
 	char	c;
 	int		i;
 	int		j;
 
 	i = -1;
-	pos->posX = 0;
-	pos->posY = 0;
-	pos->dirX = 0;
-	pos->dirY = 0;
+    ft_init_player(player);
 	while (++i < maps->mapy)
 	{
 		j = -1;
@@ -70,12 +72,12 @@ void	ft_pos(t_maps *maps, t_pos *pos)
 			c = maps->mtx[i][j];
 			if (c == 'N' || c == 'E' || c == 'S' || c == 'W')
 			{
-				pos->posX = (double)j + 0.5;
-				pos->posY = (double)i + 0.5;
-				pos->dirX = (c == 'E') || (c == 'W') ? 1 : 0;
-				pos->dirX *= (c == 'W') ? -1 : 1;
-				pos->dirY = (c == 'S') || (c == 'N') ? 1 : 0;
-				pos->dirY *= (c == 'N') ? -1 : 1;
+				player->posX = (double)j + 0.5;                     // centra il personaggio
+				player->posY = (double)i + 0.5;
+				player->dirX = (c == 'E') || (c == 'W') ? 1 : 0;    //cambiare ternario per norminette -.-
+				player->dirX *= (c == 'W') ? -1 : 1;
+				player->dirY = (c == 'S') || (c == 'N') ? 1 : 0;
+				player->dirY *= (c == 'N') ? -1 : 1;
 			}
 		}
 	}

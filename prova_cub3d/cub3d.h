@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/19 17:07:41 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/20 19:20:30 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "mlx/mlx.h"
+# include <math.h>
 
 # define KEY_1			18
 # define KEY_2			19
@@ -34,7 +35,7 @@
 # define KEY_S			1
 # define KEY_D			2
 
-#define CELL_SIZE 9
+#define CELL_SIZE 16 //9
 #define WINDOW_WIDTH maps->mapx * CELL_SIZE
 #define WINDOW_HEIGHT maps->mapy * CELL_SIZE
 #define NUM_ROWS maps->mapy
@@ -73,7 +74,6 @@ typedef struct s_maps
 	int		red;
 	int		green;
 	int		blue;
-	char	**map;
 }              t_maps;
 
 typedef struct s_err
@@ -82,48 +82,52 @@ typedef struct s_err
 	int m;
 }	t_err;
 
-typedef struct s_pos
-{
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-}              t_pos;
-
 // typedef struct s_list
 // {
 // 	void			*content;
 // 	struct s_list	*next;
 // }				t_list;
 
- typedef struct s_coord
+ typedef struct s_player
  {
-// 	double		posx;
-// 	double		posy;
-// 	double		dirx;
-// 	double		diry;
-// 	double		planex;
-// 	double		planey;
-// 	double		raydirx;						//raggio laser
-// 	double		raydiry;
-// 	int			mapx;							// casella mappa
-// 	int			mapy;
-//	char		**mtx;
-// 	double 		deltadistx; 					// distanza che il raggio deve percorrere per andare da 1 lato x al successivo lato x, viceversa
-// 	double 		deltadisty;
-// 	int 		stepx;							//controllo delle componenti
-// 	int 		stepy;
-// 	double 		sidedistx;						//distanza dalla posizione iniziale del raggio al primo lato o destro o sinistro, dip dalla componente del raggio
-// 	double 		sidedisty;
-// 	double 		perpwalldist;					//verrà utilizzata per calcolare la lunghezza del raggio
-}				t_coord;
+	double		posX;
+	double		posY;
+	double		dirX;
+	double		dirY;
+	double		planeX;
+	double		planeY;
+	double		raydirX;						//raggio laser
+	double		raydirY;
+	int			p_width;
+	int			p_height;
+	double		rot_angle;
+	double		cameraX;
+	int			b_mapX;
+	int			b_mapY;
+	double		side_distX;
+	double		side_distY;
+	double		mov_speed;
+	double		delta_distX;
+	double		delta_distY;
+	int			stepX;
+	int			stepY;
+	int			hit;
+	int			side;
+	int         pix;
+	double		perp_wall_dist;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	double		cam_height;
+
+}				t_player;
 
 typedef struct s_all{
-	t_vars vars;
-	t_maps maps; 								// mancano i nomi
-	t_coord coord;
-	t_err	err;
-	t_pos	pos;
+	t_vars		vars;
+	t_maps		maps; 								// mancano i nomi
+	t_player	player;
+	t_err		err;
+	t_data		data;
 }              t_all;
 
 int			ft_create_rgb(int t, int r, int g, int b);
@@ -145,6 +149,16 @@ void		free_matrix(char **matrix);
 char		**ft_write_map(char *newline, int *my, int *mx, char **tb);
 void	    my_pixel_put(t_vars *vars, t_maps *maps, int i, int j);
 void	    ft_draw_map(t_vars *vars, t_maps *maps);
-void	ft_pos(t_maps *maps, t_pos *pos);
+void		ft_pos(t_maps *maps, t_player *player);
+// void		draw_line(t_player *player, t_vars *vars);
+void		ft_init_player(t_player *player);
+void	ft_fill_mtx(char **tmp_cell, t_all *all);
+int		 ft_raycasting(t_all *all);
+static void		do_raycasting(t_all *all, t_player *player);
+void hit(t_player *player, t_all *all);
+static void	predict_wall_face(t_player *player);
+void		perp_and_height(t_player *player, t_all *all);
+static void		next_step(t_player *player);
+
 
 #endif 
