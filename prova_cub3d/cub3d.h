@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/20 19:20:30 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/21 11:56:24 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,13 +152,15 @@ void	    ft_draw_map(t_vars *vars, t_maps *maps);
 void		ft_pos(t_maps *maps, t_player *player);
 // void		draw_line(t_player *player, t_vars *vars);
 void		ft_init_player(t_player *player);
-void	ft_fill_mtx(char **tmp_cell, t_all *all);
-int		 ft_raycasting(t_all *all);
+void			ft_fill_mtx(char **tmp_cell, t_all *all);
+int		 		ft_raycasting(t_all *all);
 static void		do_raycasting(t_all *all, t_player *player);
-void hit(t_player *player, t_all *all);
-static void	predict_wall_face(t_player *player);
-void		perp_and_height(t_player *player, t_all *all);
+void 			hit(t_player *player, t_all *all);
+static void		predict_wall_face(t_player *player);
+void			perp_and_height(t_player *player, t_all *all);
 static void		next_step(t_player *player);
+int				is_map_char(char c, char *mapchars);
+char			*str_to_map_rows(char *str);
 
 
 #endif 

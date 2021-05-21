@@ -7,7 +7,7 @@ LIBFT = libft.a
 MAP = maps.cub
 
 SRC =	maps/parsingmap.c maps/gnl.c maps/pars_textures.c maps/pars_colors.c maps/window.c maps/main.c\
-		maps/draw_map.c maps/player.c\
+		maps/draw_map.c maps/player.c maps/map_filler_utils.c\
 
 INCLUDE = include
 

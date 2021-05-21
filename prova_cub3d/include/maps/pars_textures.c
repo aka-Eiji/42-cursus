@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:06:44 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/20 17:27:28 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/21 13:50:01 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,14 @@ char	**ft_write_map(char *newline, int *my, int *mx, char **tb)
 {
 	char	**temp;
 	int		i;
+	char 	*str;
 
 	i = 0;
 	temp = malloc(sizeof(*temp) * ((*my) + 1));
 	while (i < *my)
 	{
-		temp[i] = ft_strdup(tb[i]);
+		str = str_to_map_rows(tb[i]);
+		temp[i] = ft_strdup(str);
 		i++;
 	}
 	temp[i] = 0;
@@ -98,14 +100,16 @@ char	**ft_write_map(char *newline, int *my, int *mx, char **tb)
 	i = 0;
 	while (i < *my - 1)
 	{
-		tb[i] = ft_strdup(temp[i]);
+		str = str_to_map_rows(temp[i]);
+		tb[i] = ft_strdup(str);
 		i++;
 	}
 	tb[i] = ft_strdup(newline);
 	tb[i + 1] = 0;
 	free_matrix(temp);
-	if (ft_strlen(newline) > *mx)
-		*mx = ft_strlen(newline);
+	printf("len %d\n", ft_strlen(str));
+	if (ft_strlen(str) >= *mx)
+		*mx = ft_strlen(str);
 	return (tb);
 }
 
@@ -136,6 +140,12 @@ int		ft_parsemap(t_all *all, char *newline)
 	i = 0;
 	if (ft_validmap(&all->maps) != 1)
 		printf("ERRORE!!!!!!!!!!!!\n\n\n\n\n\n");
+
+	while (i < all->maps.mapy)
+	{
+		printf("mtx %p %s\n", all->maps.mtx[i], all->maps.mtx[i]);
+		i++;
+	}
 	free(newline);
 	return (0);
 }
