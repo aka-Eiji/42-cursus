@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:06:44 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/21 13:50:01 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/21 17:06:43 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ char	**ft_write_map(char *newline, int *my, int *mx, char **tb)
 	{
 		str = str_to_map_rows(tb[i]);
 		temp[i] = ft_strdup(str);
+		free(str);
 		i++;
 	}
 	temp[i] = 0;
@@ -102,14 +103,15 @@ char	**ft_write_map(char *newline, int *my, int *mx, char **tb)
 	{
 		str = str_to_map_rows(temp[i]);
 		tb[i] = ft_strdup(str);
+		free(str);
 		i++;
 	}
-	tb[i] = ft_strdup(newline);
+	str = str_to_map_rows(newline);
+	tb[i] = ft_strdup(str);
 	tb[i + 1] = 0;
 	free_matrix(temp);
-	printf("len %d\n", ft_strlen(str));
-	if (ft_strlen(str) >= *mx)
-		*mx = ft_strlen(str);
+	if (ft_strlen(tb[i]) > *mx)
+		*mx = ft_strlen(tb[i]);
 	return (tb);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 11:56:37 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/21 11:56:40 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/21 16:16:02 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ char	*str_to_map_rows(char *str)
 		i++;
 	}
 	temp[j] = 0;
-	len = ft_strlen(temp);
-	final_str = malloc (len + 1);
-	final_str = temp;
-	final_str[len] = 0;
+	// len = ft_strlen(temp);
+	// final_str = malloc (len + 1);
+	final_str = ft_strdup(temp);
+	// final_str[len] = 0;
 	free(temp);
 	return (final_str);
 }

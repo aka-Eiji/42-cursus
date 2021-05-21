@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/21 11:56:24 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/21 18:06:25 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,18 @@ typedef struct  s_data {
     int         endian;
 }               t_data;
 
+typedef struct			s_image
+{
+	int					width;
+	int					height;
+	int					size_line;
+	int					bpp;
+	int					endian;
+	void				*img_ptr;
+	char				*data;
+}						t_image;
+
+
 typedef struct s_maps
 {
     int		resx;
@@ -75,6 +87,16 @@ typedef struct s_maps
 	int		green;
 	int		blue;
 }              t_maps;
+
+typedef struct			s_line
+{
+	int					x;
+	int					y;
+	int					y0;
+	int					y1;
+	int					tex_x;
+	int					tex_y;
+}						t_line;
 
 typedef struct s_err
 {
@@ -119,7 +141,7 @@ typedef struct s_err
 	int			draw_start;
 	int			draw_end;
 	double		cam_height;
-
+	double		*z_buffer;
 }				t_player;
 
 typedef struct s_all{
@@ -128,6 +150,13 @@ typedef struct s_all{
 	t_player	player;
 	t_err		err;
 	t_data		data;
+	t_line		line;
+	t_image		**textures;
+	t_image		*image;
+	int					color_floor;
+	int					color_ceiling;
+
+	
 }              t_all;
 
 int			ft_create_rgb(int t, int r, int g, int b);
@@ -161,6 +190,15 @@ void			perp_and_height(t_player *player, t_all *all);
 static void		next_step(t_player *player);
 int				is_map_char(char c, char *mapchars);
 char			*str_to_map_rows(char *str);
+static void		texture_on_img(t_line *line, t_image *texture, t_all *all, t_player *player);
+void			ver_line_texture_image(t_line *line, t_all *all, t_image *texture, t_player *player);
+void			ver_line_color_image(t_line *line, t_all *all, int color);
+static void		determine_side_draw(t_player *player,t_all *all,t_line *line, double wall_x);
+int				texturisation(t_all *all, t_player *player);
+void			pixel_put_to_image(int color, int x, int y, t_image *img);
+
+
+
 
 
 #endif 
