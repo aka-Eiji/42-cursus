@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:20:42 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/20 16:50:12 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:47:00 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,38 @@ void            my_mlx_pixel_put(t_data *data, int x, int y, int color)
     *(unsigned int*)dst = color;
 }
 
-int             ft_close(int keycode, t_vars *vars)
+int             ft_error(int n)
 {
-    t_maps *all;
+    if (n == 1)
+        printf("Error: invalid textures!\n");
+    if (n == 2)
+        printf("Error: Map not valid!\n");
+    if (n == 3)
+        printf("Error: \n");
+    exit (0);
+    return (0);
+}
+
+int             ft_close(int keycode, t_all *all)
+{
     //mlx_destroy_window(vars->mlx, vars->win);
     printf("Game closed, thanks for playing!\n");
     exit(0);
     return (0);
 }
 
-int             key_hook(int keycode, t_vars *vars)
+int             key_hook(int keycode, t_all *all)
 {
     if (keycode == 53)
         exit(0);
     else if (keycode == KEY_W)
-         printf("You pressed W button, nice!\n");
+    {
+        printf("You pressed W button, nice!\n");
+        all->player.posY++;
+        // mlx_loop_hook(all->vars.mlx, ft_render_next, &all);
+        ft_render_next(all);
+        printf("PosY %f\n", all->player.posY);
+    }
     else if (keycode == KEY_A)
          printf("You pressed A button, nice!\n");
     else if (keycode == KEY_S)

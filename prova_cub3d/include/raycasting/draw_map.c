@@ -6,27 +6,11 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 13:43:42 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/21 17:53:57 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:52:42 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-
-void		pixel_put_to_image(int color, int x, int y, t_image *img)
-{
-	unsigned char *src;
-	unsigned char r;
-	unsigned char g;
-	unsigned char b;
-
-	src = (unsigned char *)&color;
-	r = src[0];
-	g = src[1];
-	b = src[2];
-	img->data[y * img->size_line + x * img->bpp / 8] = r;
-	img->data[y * img->size_line + x * img->bpp / 8 + 1] = g;
-	img->data[y * img->size_line + x * img->bpp / 8 + 2] = b;
-}
 
 void    my_pixel_put(t_vars *vars, t_maps *maps, int i, int j)
 {
@@ -54,7 +38,7 @@ void    my_pixel_put(t_vars *vars, t_maps *maps, int i, int j)
     }
 }
 
-void    ft_draw_map(t_vars *vars, t_maps *maps)
+int    ft_draw_map(t_vars *vars, t_maps *maps)
 {
     int     i;
     int     j;
@@ -70,6 +54,7 @@ void    ft_draw_map(t_vars *vars, t_maps *maps)
         }
         i++;
     }
+    return (0);
 }
 
 
@@ -80,7 +65,6 @@ void	ft_pos(t_maps *maps, t_player *player)
 	int		j;
 
 	i = -1;
-    ft_init_player(player);
 	while (++i < maps->mapy)
 	{
 		j = -1;

@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/21 18:06:25 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:52:47 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define KEY_S			1
 # define KEY_D			2
 
-#define CELL_SIZE 16 //9
+#define CELL_SIZE 30 //9
 #define WINDOW_WIDTH maps->mapx * CELL_SIZE
 #define WINDOW_HEIGHT maps->mapy * CELL_SIZE
 #define NUM_ROWS maps->mapy
@@ -120,8 +120,8 @@ typedef struct s_err
 	double		planeY;
 	double		raydirX;						//raggio laser
 	double		raydirY;
-	int			p_width;
-	int			p_height;
+	int			width;
+	int			height;
 	double		rot_angle;
 	double		cameraX;
 	int			b_mapX;
@@ -159,43 +159,46 @@ typedef struct s_all{
 	
 }              t_all;
 
-int			ft_create_rgb(int t, int r, int g, int b);
-int			ft_check_virg(int i, char *newline);
-void		ft_check_rgb(int i, char *newline, t_maps *maps);
-void		ft_colors(char *newline, t_maps *maps);
-char		*charjoin(char *s, char c, int max);
-int			gnl(int fd, char **line);
-void		ft_textures(t_maps *maps, char *newline);
-int			ft_parsemap(t_all *all, char *newline);
-void		ft_res(char *newline, t_maps *maps);
-void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int			ft_close(int keycode, t_vars *vars);
-int			key_hook(int keycode, t_vars *vars);
-void 		ft_init(t_maps *maps);
-int			ft_validmap(t_maps *maps);
-int			ft_jumpspace(int c);
-void		free_matrix(char **matrix);
-char		**ft_write_map(char *newline, int *my, int *mx, char **tb);
-void	    my_pixel_put(t_vars *vars, t_maps *maps, int i, int j);
-void	    ft_draw_map(t_vars *vars, t_maps *maps);
-void		ft_pos(t_maps *maps, t_player *player);
-// void		draw_line(t_player *player, t_vars *vars);
-void		ft_init_player(t_player *player);
+int				ft_create_rgb(int t, int r, int g, int b);
+int				ft_check_virg(int i, char *newline);
+void			ft_check_rgb(int i, char *newline, t_maps *maps);
+void			ft_colors(char *newline, t_maps *maps);
+char			*charjoin(char *s, char c, int max);
+int				gnl(int fd, char **line);
+void			ft_textures(t_maps *maps, char *newline);
+int				ft_parsemap(t_all *all, char *newline);
+void			ft_res(char *newline, t_maps *maps);
+void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
+int				ft_close(int keycode, t_all *all);
+int				key_hook(int keycode, t_all *all);
+void 			ft_init(t_maps *maps);
+int				ft_validmap(t_maps *maps);
+int				ft_jumpspace(int c);
+void			free_matrix(char **matrix);
+char			**ft_write_map(char *newline, int *my, int *mx, char **tb);
+void	   		my_pixel_put(t_vars *vars, t_maps *maps, int i, int j);
+int	    	ft_draw_map(t_vars *vars, t_maps *maps);
+void			ft_pos(t_maps *maps, t_player *player);
+// void			draw_line(t_player *player, t_vars *vars);
+void			ft_init_player(t_player *player);
 void			ft_fill_mtx(char **tmp_cell, t_all *all);
 int		 		ft_raycasting(t_all *all);
-static void		do_raycasting(t_all *all, t_player *player);
-void 			hit(t_player *player, t_all *all);
-static void		predict_wall_face(t_player *player);
-void			perp_and_height(t_player *player, t_all *all);
-static void		next_step(t_player *player);
+void 			hit(t_all *all);
+static void		predict_wall_face(t_all *all);
+void			perp_and_height(t_all *all);
+void			next_step(t_all *all);
 int				is_map_char(char c, char *mapchars);
 char			*str_to_map_rows(char *str);
-static void		texture_on_img(t_line *line, t_image *texture, t_all *all, t_player *player);
-void			ver_line_texture_image(t_line *line, t_all *all, t_image *texture, t_player *player);
+static void		texture_on_img(t_line *line, t_image *texture, t_all *all);
+void			ver_line_texture_image(t_line *line, t_all *all, t_image *texture);
 void			ver_line_color_image(t_line *line, t_all *all, int color);
-static void		determine_side_draw(t_player *player,t_all *all,t_line *line, double wall_x);
-int				texturisation(t_all *all, t_player *player);
+static void		determine_side_draw(t_all *all, t_line *line, double wall_x);
+int				texturisation(t_all *all);
 void			pixel_put_to_image(int color, int x, int y, t_image *img);
+int				ft_error(int i);
+static void		do_raycasting(t_all *all);
+int			set_texture(t_all *all, const char *path, int texture_index);
+int     ft_render_next(t_all *all);
 
 
 

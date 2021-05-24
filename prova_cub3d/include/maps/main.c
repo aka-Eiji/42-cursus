@@ -6,16 +6,22 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:19:30 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/20 19:22:07 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:52:10 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
+int     ft_render_next(t_all *all)
+{
+    // mlx_destroy_image(all->vars.mlx, all->data.img);
+   
+    mlx_pixel_put(all->vars.mlx, all->vars.win, (all->player.posY * CELL_SIZE), (all->player.posX * CELL_SIZE), 0x000033FF);
+     return(1);
+}
+
 int  main(int argc, char **argv)
 {
-  	// t_vars      vars;
-    // t_data      img;
     t_all       all;
 	char        *newline;
     int i;
@@ -40,15 +46,14 @@ int  main(int argc, char **argv)
     printf("MAPS COORDINATES\n");
     printf("Y %d\n", all.maps.mapy);
     printf("X %d\n", all.maps.mapx);
-    // printf("PosY %f\n", all.player.posY);
-    // printf("PosX %f\n", all.player.posX);
-	// printf("dirY %f\n", all.player.dirY);
-    // printf("dirX %f\n", all.player.dirX);
+    printf("PosY %f\n", all.player.posY);
+    printf("PosX %f\n", all.player.posX);
+	printf("dirY %f\n", all.player.dirY);
+    printf("dirX %f\n", all.player.dirX);
     all.vars.win = mlx_new_window(all.vars.mlx, all.maps.resx, all.maps.resy, "Cub3D");
-    ft_draw_map(&all.vars, &all.maps);
-    ft_raycasting(&all);
-    // draw_line(&all.player, &all.vars);
+    // ft_draw_map(&all.vars, &all.maps);
     mlx_key_hook(all.vars.win, key_hook, &all.vars);
     mlx_hook(all.vars.win, 17, 1L<<0, ft_close, &all.vars);
+    mlx_loop_hook(all.vars.mlx, ft_draw_map(&all.vars, &all.maps), &all);
     mlx_loop(all.vars.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 16:09:08 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/20 18:44:09 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/24 17:32:35 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,18 @@ int	ft_validmap(t_maps *maps)
 		while (j < ft_strlen(maps->mtx[i]))
 		{
 			if ((maps->mtx[i][j] != '1' && maps->mtx[i][j] != ' ') && i == 0)
-				return (-1);
+				return (2);
 			else if ((maps->mtx[i][j] != '1' && maps->mtx[i][j] != ' ') && i == (NUM_ROWS - 1))
-				return (-1);
+				return (2);
 			else if ((maps->mtx[i][j] != '1' && maps->mtx[i][j] != ' ') && j == 0)
-				return (-1);
+				return (2);
 			else if ((maps->mtx[i][j] != '1' && maps->mtx[i][j] != ' ') && j == (ft_strlen(maps->mtx[i]) - 1))
-				return (-1);
+				return (2);
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	return (0);
 }
 
 
