@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/24 19:52:47 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/25 15:14:25 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 # define KEY_S			1
 # define KEY_D			2
 
-#define CELL_SIZE 30 //9
+#define CELL_SIZE 30
 #define WINDOW_WIDTH maps->mapx * CELL_SIZE
 #define WINDOW_HEIGHT maps->mapy * CELL_SIZE
 #define NUM_ROWS maps->mapy

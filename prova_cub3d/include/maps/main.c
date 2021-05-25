@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:19:30 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/24 19:52:10 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/25 15:12:44 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,21 @@
 
 int     ft_render_next(t_all *all)
 {
+    double i = 5;
+    double j;
     // mlx_destroy_image(all->vars.mlx, all->data.img);
-   
-    mlx_pixel_put(all->vars.mlx, all->vars.win, (all->player.posY * CELL_SIZE), (all->player.posX * CELL_SIZE), 0x000033FF);
-     return(1);
+    ft_draw_map(&all->vars, &all->maps);
+    while (i > -5)
+    {
+        j = -5;
+        while (j < 5)
+        {
+            mlx_pixel_put(all->vars.mlx, all->vars.win, (all->player.posX * CELL_SIZE + j), (all->player.posY * CELL_SIZE + i), 0x000033FF);
+            j++;
+        }
+        i--;
+    }
+    return(1);
 }
 
 int  main(int argc, char **argv)
@@ -54,6 +65,6 @@ int  main(int argc, char **argv)
     // ft_draw_map(&all.vars, &all.maps);
     mlx_key_hook(all.vars.win, key_hook, &all.vars);
     mlx_hook(all.vars.win, 17, 1L<<0, ft_close, &all.vars);
-    mlx_loop_hook(all.vars.mlx, ft_draw_map(&all.vars, &all.maps), &all);
+    mlx_loop_hook(all.vars.mlx, ft_render_next, &all);
     mlx_loop(all.vars.mlx);
 }

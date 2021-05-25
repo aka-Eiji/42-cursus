@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:20:42 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/24 19:47:00 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/25 14:10:38 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,30 @@ int             key_hook(int keycode, t_all *all)
     else if (keycode == KEY_W)
     {
         printf("You pressed W button, nice!\n");
-        all->player.posY++;
+        all->player.posX -= 0.2;
+        // next_step(all);
         // mlx_loop_hook(all->vars.mlx, ft_render_next, &all);
         ft_render_next(all);
         printf("PosY %f\n", all->player.posY);
     }
     else if (keycode == KEY_A)
-         printf("You pressed A button, nice!\n");
+    {
+        printf("You pressed A button, nice!\n");
+        all->player.posY -= 0.2;
+        ft_render_next(all);
+    }
     else if (keycode == KEY_S)
-         printf("You pressed S button, nice!\n");
+    {
+        printf("You pressed S button, nice!\n");
+         all->player.posX += 0.2;
+        ft_render_next(all);
+        printf("PosY %f\n", all->player.posY);
+    }
     else if (keycode == KEY_D)
-         printf("You pressed D button, nice!\n");
+    {
+        printf("You pressed D button, nice!\n");
+        all->player.posY += 0.2;
+        ft_render_next(all);
+    }
     return (0);
 }
