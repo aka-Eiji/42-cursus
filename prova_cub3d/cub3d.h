@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/25 15:14:25 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/25 15:41:59 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,8 @@ typedef struct s_err
 	int			draw_end;
 	double		cam_height;
 	double		*z_buffer;
+	double		pdx;
+	double		pdy;
 }				t_player;
 
 typedef struct s_all{

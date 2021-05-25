@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:19:30 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/25 15:12:44 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/25 15:39:33 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int     ft_render_next(t_all *all)
 {
     double i = 5;
     double j;
+    double x;
+    double y;
     // mlx_destroy_image(all->vars.mlx, all->data.img);
     ft_draw_map(&all->vars, &all->maps);
     while (i > -5)
@@ -28,6 +30,8 @@ int     ft_render_next(t_all *all)
         }
         i--;
     }
+    // x = all->player.posX + cos(all->player.rot_angle) * 40;
+    // y =  all->player.posY + sin(all->player.rot_angle) * 40;
     return(1);
 }
 
