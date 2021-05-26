@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 13:43:42 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/26 12:45:15 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/26 16:00:49 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,3 +104,71 @@ void    ft_draw_line(t_all *all)
         i++;
     }
 }
+
+void    ft_draw_player(t_all *all)
+{
+    double i = 5;
+    double j;
+
+    while (i > -5)
+    {
+        j = -5;
+        while (j < 5)
+        {
+            mlx_pixel_put(all->vars.mlx, all->vars.win, (all->player.posX * CELL_SIZE + j), (all->player.posY * CELL_SIZE + i), 0x000033FF);
+            j++;
+        }
+        i--;
+    }
+}
+
+void    ft_move_player(t_all *all)
+{
+    all->player.rot_angle += all->player.turn_direction * all->player.turn_speed;
+    
+    double move_step;
+    double new_posX;
+    double new_posY;
+
+    move_step = all->player.walk_direction * SPEED;
+    new_posX = all->player.posX + cos(all->player.rot_angle) * move_step;
+    new_posY = all->player.posY + sin(all->player.rot_angle) * move_step;
+    all->player.posX = new_posX;
+    all->player.posY = new_posY;
+}
+
+void    ft_init_keys(t_all *all)
+{
+    all->keys.up = 0;
+    all->keys.down = 0;
+    all->keys.left = 0;
+    all->keys.right = 0;
+    all->keys.cam_left = 0;
+    all->keys.cam_right = 0;
+}
+
+void    ft_keys(t_all *all)
+{
+    if (all->keys.up == 1)
+    {
+        all->player.walk_direction += 1;
+        all->player.posY += 1;
+
+    }
+    else if (all->keys.down == 1)
+    {
+        all->player.walk_direction -= 1;
+        all->player.posY -= 1;
+    }
+    else if (all->keys.left == 1)
+    {
+        all->player.walk_direction -= 1;
+        all->player.posX -= 1;
+    }
+    else if (all->keys.right == 1)
+    {
+        all->player.walk_direction += 1;
+        all->player.posX += 1;
+    }
+}
+

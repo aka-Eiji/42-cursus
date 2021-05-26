@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/26 12:54:01 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/26 15:53:08 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define KEY_A			0
 # define KEY_S			1
 # define KEY_D			2
+# define CAM_LEFT		123
+# define CAM_RIGHT		124
 
 # define CELL_SIZE 30
 # define WINDOW_WIDTH maps->mapx * CELL_SIZE
@@ -42,7 +44,7 @@
 # define NUM_COLS maps->mapx
 # define NUM_RAYS WINDOW_WIDTH
 # define MINIMAPS_SCALE 0.5
-# define SPEED = 15;
+# define SPEED 100
 
 typedef struct  s_vars 
 {
@@ -132,8 +134,6 @@ typedef struct s_err
 	double		mov_speed;
 	double		delta_distX;
 	double		delta_distY;
-	int			stepX;
-	int			stepY;
 	int			hit;
 	int			side;
 	int         pix;
@@ -145,7 +145,21 @@ typedef struct s_err
 	double		*z_buffer;
 	double		px;
 	double		py;
+	double		turn_direction;
+	double		turn_speed;
+	int			walk_direction;
 }				t_player;
+
+typedef	struct s_key
+{
+	int			up;
+	int			down;
+	int			left;
+	int			right;
+	int			cam_left;
+	int			cam_right;
+}				t_key;
+
 
 typedef struct s_all{
 	t_vars		vars;
@@ -158,6 +172,7 @@ typedef struct s_all{
 	t_image		*image;
 	int					color_floor;
 	int					color_ceiling;
+	t_key		keys;
 
 	
 }              t_all;
@@ -200,9 +215,13 @@ int				texturisation(t_all *all);
 void			pixel_put_to_image(int color, int x, int y, t_image *img);
 int				ft_error(int i);
 static void		do_raycasting(t_all *all);
-int			set_texture(t_all *all, const char *path, int texture_index);
-int     ft_render_next(t_all *all);
-void    ft_draw_line(t_all *all);
+int				set_texture(t_all *all, const char *path, int texture_index);
+int     		ft_render_next(t_all *all);
+void    		ft_draw_line(t_all *all);
+void    		ft_move_player(t_all *all);
+void    		ft_draw_player(t_all *all);
+void    		ft_keys(t_all *all);
+void    		ft_init_keys(t_all *all);
 
 
 

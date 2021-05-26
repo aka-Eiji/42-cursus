@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:20:42 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/26 11:55:19 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/26 15:57:37 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,49 +42,31 @@ int             ft_close(int keycode, t_all *all)
 
 int             key_hook(int keycode, t_all *all)
 {
-    // double pa;
-
+    ft_init_keys(all);
     if (keycode == 53)
         exit(0);
     else if (keycode == KEY_W)
     {
-        printf("You pressed W button, nice!\n");
-        all->player.posY -= 0.1;
-        // all->player.posX += all->player.pdx;
-        // all->player.posY += all->player.pdy;
-        // next_step(all);
-        // mlx_loop_hook(all->vars.mlx, ft_render_next, &all);
+        all->keys.up = 1;
+        ft_keys(all);
         ft_render_next(all);
     }
     else if (keycode == KEY_A)
     {
-        printf("You pressed A button, nice!\n");
-        all->player.posX -= 0.1;
-        // all->player.rot_angle -= 0.1;
-        // if (all->player.rot_angle < 0)
-        //     all->player.rot_angle += 2 * M_PI;
-        // all->player.pdx = cos(all->player.rot_angle) * 5;
-        // all->player.pdy = sin(all->player.rot_angle) * 5;
+        all->keys.left = 1;
+        ft_keys(all);
         ft_render_next(all);
     }
     else if (keycode == KEY_S)
     {
-        printf("You pressed S button, nice!\n");
-        all->player.posY += 0.1;
-        // all->player.posX -= all->player.pdx;
-        // all->player.posY -= all->player.pdy;
+        all->keys.down = 1;
+        ft_keys(all);
         ft_render_next(all);
-        printf("PosY %f\n", all->player.posY);
     }
     else if (keycode == KEY_D)
     {
-        printf("You pressed D button, nice!\n");
-        all->player.posX += 0.1;
-        // all->player.rot_angle += 0.1;
-        // if (all->player.rot_angle > 2 * M_PI)
-        //     all->player.rot_angle -= 2 * M_PI;
-        // all->player.pdx = cos(all->player.rot_angle) * 5;
-        // all->player.pdy = sin(all->player.rot_angle) * 5;
+        all->keys.right = 1;
+        ft_keys(all);
         ft_render_next(all);
     }
     return (0);
