@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 16:44:38 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/25 16:46:27 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/26 12:44:23 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	ft_init_player(t_player *player)
 {
-	// player->rot_angle = M_PI_2;
+	player->rot_angle = M_PI_2;
 	player->planeX = 0;
 	player->planeY = 0.66;
 	player->raydirX = 0;
@@ -37,8 +37,8 @@ void	ft_init_player(t_player *player)
 	player->raydirY = player->dirY + player->planeY * player->cameraX;
 	player->stepX = 0;
 	player->stepY = 0;
-	player->pdx = cos(player->rot_angle) * 5;
-	player->pdy = sin(player->rot_angle) * 5;
+	player->px = cos(player->rot_angle) * 5;
+	player->py = sin(player->rot_angle) * 5;
 
 }
 

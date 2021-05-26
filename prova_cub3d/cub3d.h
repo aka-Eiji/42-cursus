@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:00 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/05/25 15:41:59 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/26 12:54:01 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,14 @@
 # define KEY_S			1
 # define KEY_D			2
 
-#define CELL_SIZE 30
-#define WINDOW_WIDTH maps->mapx * CELL_SIZE
-#define WINDOW_HEIGHT maps->mapy * CELL_SIZE
-#define NUM_ROWS maps->mapy
-#define NUM_COLS maps->mapx
-#define NUM_RAYS WINDOW_WIDTH
-#define MINIMAPS_SCALE 0.5
+# define CELL_SIZE 30
+# define WINDOW_WIDTH maps->mapx * CELL_SIZE
+# define WINDOW_HEIGHT maps->mapy * CELL_SIZE
+# define NUM_ROWS maps->mapy
+# define NUM_COLS maps->mapx
+# define NUM_RAYS WINDOW_WIDTH
+# define MINIMAPS_SCALE 0.5
+# define SPEED = 15;
 
 typedef struct  s_vars 
 {
@@ -142,8 +143,8 @@ typedef struct s_err
 	int			draw_end;
 	double		cam_height;
 	double		*z_buffer;
-	double		pdx;
-	double		pdy;
+	double		px;
+	double		py;
 }				t_player;
 
 typedef struct s_all{
@@ -201,6 +202,7 @@ int				ft_error(int i);
 static void		do_raycasting(t_all *all);
 int			set_texture(t_all *all, const char *path, int texture_index);
 int     ft_render_next(t_all *all);
+void    ft_draw_line(t_all *all);
 
 
 

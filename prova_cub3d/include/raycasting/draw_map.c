@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 13:43:42 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/25 15:13:36 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/26 12:45:15 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,25 @@ void	ft_pos(t_maps *maps, t_player *player)
 			}
 		}
 	}
+}
+
+void    ft_draw_line(t_all *all)
+{
+    all->player.px = all->player.posX + cos(all->player.rot_angle) * 40;
+    all->player.py = all->player.posY + sin(all->player.rot_angle) * 40;
+
+    int i;
+    int j;
+
+    i = 0;
+    while (i < 1)
+    {
+        j = 0;
+        while (j < all->player.px)
+        {
+            mlx_pixel_put(all->vars.mlx, all->vars.win, (all->player.posX * CELL_SIZE)+ j, (all->player.posY * CELL_SIZE) + i, 0x00FF3300);
+            j++;
+        }
+        i++;
+    }
 }

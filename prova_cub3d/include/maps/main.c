@@ -6,7 +6,7 @@
 /*   By: mmurello <mmurello@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 14:19:30 by mmurello          #+#    #+#             */
-/*   Updated: 2021/05/25 15:39:33 by mmurello         ###   ########.fr       */
+/*   Updated: 2021/05/26 12:11:57 by mmurello         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ int     ft_render_next(t_all *all)
         }
         i--;
     }
-    // x = all->player.posX + cos(all->player.rot_angle) * 40;
-    // y =  all->player.posY + sin(all->player.rot_angle) * 40;
+    ft_draw_line(all);
     return(1);
 }
 
