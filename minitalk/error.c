@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkosiara <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/28 15:24:27 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/02/01 16:25:37 by jkosiara         ###   ########.fr       */
+/*   Created: 2021/06/09 18:28:33 by jkosiara          #+#    #+#             */
+/*   Updated: 2021/06/09 18:28:36 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minitalk.h"
 
-t_list	*ft_lstnew(void *content)
+void ft_check_error(int argc, char *argv[])
 {
-	t_list	*l_new;
-
-	if (!(l_new = (t_list*)malloc(sizeof(t_list))))
-		return (0);
-	l_new->content = content;
-	l_new->next = 0;
-	return (l_new);
+	if (argc != 3)
+		exit(0);
 }
