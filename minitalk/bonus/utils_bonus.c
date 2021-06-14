@@ -6,11 +6,11 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 17:17:38 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/06/10 17:17:39 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/06/14 19:31:24 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 static int	nlen(int n)
 {
@@ -55,22 +55,40 @@ char	*ft_itoa(int n)
 	return (dst);
 }
 
-void	ft_putchar_fd(char c, int fd)
+int ft_count_bytes(char s)
 {
-	write(fd, &c, 1);
+	int i;
+
+	i = 0;
+	while (s < 0)
+	{
+		s = s << 1;
+		i++;
+	}
+	return (i);
+}
+
+void	ft_putchar_fd(char c, int fd, int byte)
+{
+	write(fd, &c, byte);
 }
 
 void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
-
+	int byte;
+	
 	i = 0;
 	if (fd != 0 && s != 0)
 	{
 		while (s[i])
 		{
-			ft_putchar_fd(s[i], fd);
-			i++;
+			if (s[i] < 0)
+				byte = ft_count_byte(s[i]);
+			else 
+				byte = 1;
+			ft_putchar_fd(s[i], fd, byte);
+			i += byte;
 		}
 	}
 }

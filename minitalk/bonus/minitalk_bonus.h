@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 17:10:18 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/06/10 17:10:47 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/06/14 19:27:14 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,25 @@
 #include <stdio.h>
 #include <signal.h>
 #include <stdlib.h>
+
+/* utils function */
+
+char	*ft_itoa(int n);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putchar_fd(char c, int fd, int byte);
+int		ft_atoi(const char *str);
+int		ft_isdigit(int c);
+void	ft_string_complement(char *string);
+char	*ft_eightbit_pluse(char cara);
+char    *ft_eightbit(char character);
+
+
+
+
+
+
+/* error function */
+
+void	ft_check_error(int argc, char *argv[]);
 
 #endif

@@ -6,11 +6,11 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 17:17:29 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/06/10 17:18:22 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/06/14 19:05:25 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 int	ft_isdigit(int c)
 {

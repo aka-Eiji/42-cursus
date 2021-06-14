@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 17:07:56 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/06/10 17:16:44 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/06/14 19:16:22 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_eightbit_pluse(char cara)
 	char	*string;
 
 	cara *= -1;
-	string = ft_ctobit(cara);
+	string = ft_eightbit(cara);
 	ft_string_complement(string);
 	return (string);
 }
