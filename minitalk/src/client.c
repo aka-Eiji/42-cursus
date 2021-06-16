@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:27:40 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/06/16 19:07:49 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/06/16 19:19:01 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,39 +48,39 @@ void ft_send_term(int pid)
         kill(pid,SIGUSR1);
         i++;
         usleep(10);
-    }
+	}
 }
 
-void ft_send_signal(int pid, char *string)
+void	ft_send_signal(int pid, char *string)
 {
-    int     i;
-    int     j;
-    char *temp;
+	int					pid;
+	int					i;
+	char				*string;
 
-    i = 0;
-    while(string[i])
-    {
-        temp = ft_eightbit(string[i]);
-        j = 0;
-        while(temp[j])
-        {
-            if (temp[j] == '0')
-                kill(pid,SIGUSR1);
-            else
-                kill(pid,SIGUSR2);
-            j++;
-            usleep(10);
-        }
-        i++;
-    }
-    ft_send_term(pid);
+	i = 0;
+	while (string[i])
+	{
+		temp = ft_eightbit(string[i]);
+		j = 0;
+		while (temp[j])
+		{
+			if (temp[j] == '0')
+				kill(pid, SIGUSR1);
+			else
+				kill(pid, SIGUSR2);
+			j++;
+			usleep(10);
+		}
+		i++;
+	}
+	ft_send_term(pid);
 }
 
-int main (int argc, char **argv) 
+int	main(int argc, char **argv)
 {
-	int	i;
-	int	pid;
-    char	*string;
+	int					pid;
+	int					i;
+	char				*string;
 
 	if (argc != 3)
 		exit(0);
