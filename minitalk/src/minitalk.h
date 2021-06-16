@@ -6,18 +6,17 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:37:50 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/06/10 17:18:52 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/06/16 19:02:07 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
-#define MINITALK_H
+# define MINITALK_H
 
-#include <unistd.h>
-#include <stdio.h>
-#include <signal.h>
-#include <stdlib.h>
-
+# include <unistd.h>
+# include <stdio.h>
+# include <signal.h>
+# include <stdlib.h>
 
 /* utils function */
 
@@ -32,5 +31,3 @@ int		ft_isdigit(int c);
 void	ft_check_error(int argc, char *argv[]);
 
 #endif
-
-

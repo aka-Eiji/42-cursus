@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:27:40 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/06/16 17:10:03 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/06/16 19:07:49 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,20 +78,20 @@ void ft_send_signal(int pid, char *string)
 
 int main (int argc, char **argv) 
 {
-    char *string;
-    int i;
-    int pid;
-    
-    if (argc != 3)
-        exit(0);
-    i = 0;
-    pid = ft_atoi(argv[1]);
-    if (pid < 0)
-    {
-         write(1, "PID not valid.. \n", 18);
-         return(0);   
-    }
-    write(1, "signal sended. \n", 25);
-    string = argv[2];
-    ft_send_signal(pid, string);
+	int	i;
+	int	pid;
+    char	*string;
+
+	if (argc != 3)
+		exit(0);
+	i = 0;
+	pid = ft_atoi(argv[1]);
+	if (pid < 0)
+	{
+		write (1, "PID not valid.. \n", 18);
+		return (0);
+	}
+	write(1, "signal sended. \n", 25);
+	string = argv[2];
+	ft_send_signal(pid, string);
 }

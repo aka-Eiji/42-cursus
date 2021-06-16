@@ -6,15 +6,15 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 17:07:56 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/06/16 17:23:54 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/06/16 17:45:55 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-char *ft_eightbit(char character)
+char    *ft_eightbit(char character)
 {
-    int i;
+    int        i;
     char *result;
 
     result = malloc(sizeof(9));

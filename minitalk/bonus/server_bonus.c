@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 19:02:16 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/06/16 17:35:48 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/06/16 18:46:15 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void ft_count(int sign)
    static int i;
    static char character;
    static int index;
-   static char string[100]; 
+   static char string[2048]; 
 
    i++;
    if(sign == SIGUSR2)
@@ -26,9 +26,7 @@ void ft_count(int sign)
       character += 1;
    }
    else
-   {
       character = character << 1;
-   }
    if (i == 8)
    {
       string[index] = character;
