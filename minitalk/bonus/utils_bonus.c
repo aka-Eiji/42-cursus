@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 17:17:38 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/06/14 19:31:24 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/06/16 17:35:39 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ int ft_count_bytes(char s)
 	return (i);
 }
 
-void	ft_putchar_fd(char c, int fd, int byte)
+void	ft_putchar_fd(char *c, int fd, int byte)
 {
-	write(fd, &c, byte);
+	write(fd, c, byte);
 }
 
 void	ft_putstr_fd(char *s, int fd)
@@ -84,10 +84,12 @@ void	ft_putstr_fd(char *s, int fd)
 		while (s[i])
 		{
 			if (s[i] < 0)
-				byte = ft_count_byte(s[i]);
+			{
+				byte = ft_count_bytes(s[i]);
+			}
 			else 
 				byte = 1;
-			ft_putchar_fd(s[i], fd, byte);
+			ft_putchar_fd(&s[i], fd, byte);
 			i += byte;
 		}
 	}

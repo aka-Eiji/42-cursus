@@ -6,37 +6,52 @@
 #    By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/09 18:27:46 by jkosiara          #+#    #+#              #
-#    Updated: 2021/06/09 18:27:49 by jkosiara         ###   ########.fr        #
+#    Updated: 2021/06/16 17:38:29 by jkosiara         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SERVER   = server
+SERVER = server
 
-CLIENT   = client
+CLIENT = client
 
-CC	     = gcc
+SERVER_BONUS = server_bonus
 
-#FLAGS    = -Wall -Werror -Wextra
+CLIENT_BONUS = client_bonus
 
-SERVER_SRC = server.c utils.c utils2.c 
+CC	     = gcc $(FLAGS)
 
-CLIENT_SRC = client.c error.c 
+FLAGS    = -Wall -Werror -Wextra
 
-all : $(SERVER) $(CLIENT)
+SERVER_SRC = src/server.c src/utils.c src/utils2.c 
 
-$(SERVER) : server.o utils.o utils2.o minitalk.h
-	@$(CC) server.o utils.o utils2.o -o $@ 
+CLIENT_SRC = src/client.c  src/utils.c src/utils2.c
 
-$(CLIENT) : client.o error.o utils.c utils2.c minitalk.h
-	@$(CC) client.o error.o utils.c utils2.c -o $@
+SERVER_BONUS_SRC = bonus/server_bonus.c  bonus/utils_bonus.c bonus/utils2_bonus.c
 
-%.o : %.c
-	@$(CC) -c $(SERVER_SRC) $(CLIENT_SRC) -c -I minitalk.h
+CLIENT_BONUS_SRC = bonus/client_bonus.c  bonus/utils_bonus.c bonus/utils2_bonus.c
+
+SERVER_BONUS_OBJ = $(SERVER_BONUS_SRC:.c=.o)
+
+CLIENT_BONUS_OBJ = $(CLIENT_BONUS_SRC:.c=.o)
+
+SERVER_SRC_OBJ	= $(SERVER_SRC:.c=.o)
+
+CLIENT_SRC_OBJ	= $(CLIENT_SRC:.c=.o)
+
+all :	fclean $(SERVER_SRC_OBJ) $(CLIENT_SRC_OBJ)
+		@$(CC) $(SERVER_SRC) -I minitalk.h -o server
+		@$(CC) $(CLIENT_SRC) -I minitalk.h -o client
+
+bonus:	fclean $(SERVER_BONUS_OBJ) $(CLIENT_BONUS_OBJ)
+		@$(CC) $(SERVER_BONUS_SRC) -I minitalk_bonus.h -o server_bonus
+		@$(CC) $(CLIENT_BONUS_SRC) -I minitalk_bonus.h -o client_bonus
 
 clean :
-	@rm -rf *.o
+	@rm -rf ./src/*.o ./bonus/*.o $(SERVER) $(CLIENT) $(CLIENT_BONUS) $(SERVER_BONUS) 
 
 fclean: clean
-	@rm -rf $(SERVER) $(CLIENT)
+	@rm -rf $(SERVER) $(CLIENT) $(CLIENT_BONUS) $(SERVER_BONUS) 
 
 re: fclean all
+
+.PHONY : bonus all clean fclean
