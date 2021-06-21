@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jolla <jolla@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 17:17:38 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/06/16 17:35:39 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/06/21 17:40:54 by jolla            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ char	*ft_itoa(int n)
 	return (dst);
 }
 
-int ft_count_bytes(char s)
+int	ft_count_bytes(char s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s < 0)
@@ -76,8 +76,8 @@ void	ft_putchar_fd(char *c, int fd, int byte)
 void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
-	int byte;
-	
+	int	byte;
+
 	i = 0;
 	if (fd != 0 && s != 0)
 	{
@@ -87,7 +87,7 @@ void	ft_putstr_fd(char *s, int fd)
 			{
 				byte = ft_count_bytes(s[i]);
 			}
-			else 
+			else
 				byte = 1;
 			ft_putchar_fd(&s[i], fd, byte);
 			i += byte;
