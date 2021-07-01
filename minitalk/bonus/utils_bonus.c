@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolla <jolla@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 17:17:38 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/06/21 17:40:54 by jolla            ###   ########.fr       */
+/*   Updated: 2021/07/01 17:39:53 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,5 @@ void	ft_putstr_fd(char *s, int fd)
 			i += byte;
 		}
 	}
+	 write(1, "\n", 1);
 }

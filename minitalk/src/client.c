@@ -3,39 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jolla <jolla@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 17:27:40 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/06/21 17:36:48 by jolla            ###   ########.fr       */
+/*   Updated: 2021/07/01 17:59:19 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-char	ft_eightbit(char character)
+char	*ft_eightbit(char carattere)
 {
 	int		i;
-	char	*result;
+	char	*ret;
 
-	result = malloc(sizeof(8));
-	if (result == 0)
+	ret = malloc(sizeof(8));
+	if (ret == 0)
 		exit(0);
-	result[7] = 0;
+	ret[7] = 0;
 	i = 6;
-	while (character > 1)
+	while (carattere > 1)
 	{
-		result[i] = (character % 2) + 48;
-		character /= 2;
+		ret[i] = (carattere % 2) + 48;
+		carattere /= 2;
 		i--;
 	}
-	result[i] = (character % 2) + 48;
+	ret[i] = (carattere % 2) + 48;
 	i--;
 	while (i >= 0)
 	{
-		result[i] = 48;
+		ret[i] = 48;
 		i--;
 	}
-	return (result);
+	return (ret);
 }
 
 void	ft_send_term(int pid)
@@ -53,9 +53,9 @@ void	ft_send_term(int pid)
 
 void	ft_send_signal(int pid, char *string)
 {
-	int					pid;
-	int					i;
-	char				*string;
+	int		i;
+	int		j;
+	char	*temp;
 
 	i = 0;
 	while (string[i])
@@ -69,8 +69,9 @@ void	ft_send_signal(int pid, char *string)
 			else
 				kill(pid, SIGUSR2);
 			j++;
-			usleep(10);
+			usleep(50);
 		}
+		free(temp);
 		i++;
 	}
 	ft_send_term(pid);

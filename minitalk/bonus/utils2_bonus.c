@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/10 17:17:29 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/06/14 19:05:25 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/07/01 17:59:31 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,3 @@ void	ft_string_complement(char *string)
 		i--;
 	}
 }
-
