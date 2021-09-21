@@ -1,10 +1,10 @@
-NAME	= push_swap
+NAME	=	push_swap
 
-SRCS	=	FUNZIONI da inserire
+SRCS	=	$(wildcard *.c))
 
-OBJS	= $(SRCS:.c=.o)
+OBJS	=	$(SRCS:.c=.o)
 
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror
 
 %.o :	%.c
 		gcc -c -g $< -o $@
