@@ -1,6 +1,6 @@
 NAME	=	push_swap
 
-SRCS	=	$(wildcard *.c))
+SRCS	=	$(wildcard *.c)
 
 OBJS	=	$(SRCS:.c=.o)
 
