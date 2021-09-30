@@ -1,29 +1,26 @@
-NAME	=	push_swap
+NAME = 	push_swap
+HEADER = push_swap.h 
+CFLAGS = -Wall -Wextra -Werror
+AR = ar -rcs
+RM = rm -rf
+SRC = $(wildcard *.c)
+OBJS = $(SRC:.c=o)
 
-SRCS	=	$(wildcard *.c)
+all:
+	$(NAME)
 
-OBJS	=	$(SRCS:.c=.o)
+$(NAME): $(OBJS)
+	make -C libft
+	gcc $(OBJS) libft/libft.a -o $(NAME) -lreadline
 
-CFLAGS	=	-Wall -Wextra -Werror
+	%.o: %.c
+	gcc -c -g -I./libft $(CFLAGS) $< -o $@
 
-%.o :	%.c
-		gcc -c -g $< -o $@
+clean:
+	make -C libft clean
+	$(RM) $(OBJS)
 
-$(NAME):	$(OBJS)
-			make -C libft
-			mv libft/libft.a .
-			gcc $(CFLAGS) $(OBJS) libft.a -o $(NAME)
+fclean: clean
+	$(RM) $(NAME) libft/libft.a
 
-all:		$(NAME)
-
-clean:		
-			rm -f $(OBJS)
-			make -C libft clean
-
-fclean:		clean
-			rm -f $(NAME_BONUS)
-			rm -f $(NAME) libft.a
-
-re:			fclean all
-
-.PHONY:		all clean fclean re
+re: fclean all

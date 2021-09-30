@@ -6,56 +6,85 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 11:41:29 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/09/21 15:09:16 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/09/30 16:46:01 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 #include <unistd.h>
 
-void ft_print_stack(t_numlist *a)
+int		ft_isspace(int c)
 {
-	t_numlist *temp;
-	
-	temp = a; 
-	if(!temp)
-	{	
-		write(1, "list NULL, error.", 18);
-		exit(1);
-	}
-	while(a)
-	{
-		ft_putnbr(temp->content);
-		temp = temp->next;
-		ft_putchar(' ');
-	}
-	ft_putchar('\n');
+	c = (unsigned char)c;
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'
+		|| c == ' ')
+		return (1);
+	return (0);
 }
 
-int ft_count_list(t_numlist *a)
+int	ft_d_count(char *s)
 {
-	t_numlist *temp;
-	int size;
+	int	n;
 
-	size = 0;
-
-	temp = a;
-	while ( a && a->next != 0)
+	if (!s)
+		return (-1);
+	n = 0;
+	while (*s)
 	{
-		size++;
-		temp = temp->next;
+		if (ft_isdigit(*s))
+		{
+			n++;
+			s++;
+			while (*s && ft_isdigit(*s))
+				s++;
+		}
+		else if ((*s < 14 && *s > 8) || *s == ' ' || *s == '-' || *s == '+')
+			s++;
+		else
+			return (-1);
 	}
-	return (size);
+	if (n < 1)
+		return (-1);
+	return (n);
 }
 
-int ft_cycle_list(t_numlist *lst)
+int	ft_split_atoi(char *s, t_stack *a)
 {
-	int min = -2147483648;
+	long	nb;
+	size_t	i;
 
-	while(lst->next != 0)
+	a->arr = malloc(sizeof(int) * (a->n + 1));
+	i = 0;
+	while (*s)
 	{
-		if (lst->content > min)
-			min = lst->content;
-			lst->next; 	
+		nb = ft_atoi(s);
+		if (nb >= 42)
+			return (0);
+		else
+			a->arr[i++] = nb;
+		while (*s && !ft_isdigit(*s))
+			s++;
+		while (*s && ft_isdigit(*s))
+			s++;
+	}
+	return (1);
+}
+
+void	free_stack(t_stack*a, t_stack *b)
+{
+	if (a->i && b->i)
+	{
+		free(a->i);
+		free(a->arr);
+		a->n = 0;
+		free(b->i);
+		b->n = 0;
+	}
+	else
+	{
+		if (a->i)
+			free(a->i);
+		free(a->arr);
+		a->n = 0;
 	}
 }

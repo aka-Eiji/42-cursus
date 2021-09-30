@@ -6,30 +6,67 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 12:16:11 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/09/21 15:05:13 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/09/30 16:59:54 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <unistd.h>
+#include "../libft/libft.h"
+# include <unistd.h>
+# include <string.h>
+# include <stdlib.h>
+# include <stdio.h>
 
-static void	ft_put_in_list(t_list **lst, char *input)
+int read_stack(char **argv, t_stack*a)
 {
-	int	*temp;
-
-	while (*input)
+	char *str;
+	char *temp;
+	
+	str = ft_strdup("");
+	while (*(++argv))
 	{
-		if (ft_isspace(*input))
-			input++;
-		else if (ft_isdigit(*input) || *input == '-' || *input == '+')
-		{
-			temp = ft_malloc(1, sizeof(int *));
-			if (!temp)
-				;
-			*temp = ft_atoi(&input);
-			ft_lstadd_back(lst, ft_lstnew((void *)temp));
-		}
-		else
-			;
+		temp = ft_strjoin(str, *argv);
+		free(str);
+		str = temp;
+		temp = ft_strjoin (str, " ");
+		free(str);
+		str = temp;
 	}
+	a->n = ft_d_count(str);
+	if (a->n <1 || !ft_split_atoi(str, a))
+	{
+		free(temp);
+		return (0);
+	}
+	free(temp);
+	if(!check_stack_valid(a))
+		return(0);
+	set_index(a);
+	return (-1);
+
+}
+
+int check_stat_valid(t_stack *a)
+{
+	int n;
+	int i;
+	int j;
+	int nb;
+
+	if (a->n == 1 && a->arr[0] == 0)
+		return(-1);
+	n = a->n;
+	j = 1;
+	while (n-- > 0)
+	{
+		nb = a->arr[j - 1];
+		i = j;
+		while (nb != a->arr[i] && n-- > 1)
+			i++;
+		if (nb != a->arr[i] && i != 0)
+			return (0);
+		j++;
+		n = a->n - j;
+	}
+	return (1);
 }

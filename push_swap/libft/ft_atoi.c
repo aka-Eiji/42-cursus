@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jkosiara <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 12:35:33 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/01/15 18:47:51 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/09/30 15:38:00 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int	ft_atoi(const char *str)
 	{
 		res = res * 10 + (*str - 48);
 		++str;
+		if (res > 2147483648 && negative == -1)
+			return (42);
+		if (res > 2147483647 && negative == 1)
+			return (42);
 	}
 	return (res * negative);
 }
