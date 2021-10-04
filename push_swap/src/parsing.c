@@ -6,16 +6,11 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 12:16:11 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/09/30 16:59:54 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/10/04 17:16:17 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "../libft/libft.h"
-# include <unistd.h>
-# include <string.h>
-# include <stdlib.h>
-# include <stdio.h>
 
 int read_stack(char **argv, t_stack*a)
 {

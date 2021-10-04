@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 15:47:49 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/09/30 17:00:08 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/10/04 17:06:02 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void rb(t_stack *b)
 	ft_putendl("ra");
 }
 
-void rra(t_stack *b)
+void rrb(t_stack *b)
 {
 	int	last;
 	int	n;

@@ -6,12 +6,18 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 11:41:29 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/09/30 16:46:01 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/10/04 19:07:00 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 #include <unistd.h>
+
+void	ft_putendl(char *s)
+{
+	ft_putstr(s);
+	write(1, "\n", 1);
+}
 
 int		ft_isspace(int c)
 {
@@ -70,7 +76,7 @@ int	ft_split_atoi(char *s, t_stack *a)
 	return (1);
 }
 
-void	free_stack(t_stack*a, t_stack *b)
+void	ft_free_stack(t_stack*a, t_stack *b)
 {
 	if (a->i && b->i)
 	{

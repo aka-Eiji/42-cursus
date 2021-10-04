@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 12:35:33 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/09/30 15:38:00 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/10/04 17:04:36 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_atoi(const char *str)
 {
-	int	res;
-	int	negative;
+	long int	res;
+	long int	negative;
 
 	negative = 1;
 	res = 0;

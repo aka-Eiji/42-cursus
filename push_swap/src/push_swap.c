@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 18:18:16 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/09/30 16:59:44 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/10/04 19:06:54 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,16 @@ int main(int argc, char *argv[])
 	else if (!read_stack(argv, &a))
 	{
 		ft_putendl("Error");
-		free_stack(&a,&b);
+		ft_free_stack(&a,&b);
 		return (-1);
 	}
+	else if (ft_a_is_sorted) // se la stack a è già ordinata, libero la memoria ed chiudo
+	{
+		ft_free_stack(&a,&b);
+		return (0);
+	}
+	else
+		ft_order_stack(a,b);
+	ft_free_stack(&a,&b);
+	return(0);
 }
