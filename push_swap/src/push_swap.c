@@ -6,7 +6,7 @@
 /*   By: jkosiara <jkosiara@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/05 18:18:16 by jkosiara          #+#    #+#             */
-/*   Updated: 2021/10/04 20:05:07 by jkosiara         ###   ########.fr       */
+/*   Updated: 2021/10/12 17:46:57 by jkosiara         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int main(int argc, char **argv)
 	else if (ft_a_is_sorted(&a))
 	{
 		ft_free_stack(&a, &b);
-		ft_putendl("Stack orderded, no operations applied.");
 		return (0);
 	}
 	else

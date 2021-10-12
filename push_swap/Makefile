@@ -8,7 +8,7 @@ SRC = src/operations.c src/moves_a.c src/moves_b.c src/parsing.c src/push_swap.c
 all: $(NAME)
 
 $(NAME):
-	make -C libft
+	@make -C libft
 	@gcc -o $(NAME) $(CFLAGS) $(SRC) libft/libft.a -I $(HEADER)
 
 clean:

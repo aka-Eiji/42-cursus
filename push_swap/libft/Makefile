@@ -6,7 +6,7 @@ BOBJS =		$(BSRCS:.c=.o)
 CFLAGS =	-Wall -Wextra -Werror
 
 %.o:		%.c
-			gcc -c $(CFLAGS) $<
+			@gcc -c $(CFLAGS) $<
 
 $(NAME):	$(OBJS)
 			ar rcs $(NAME) $(OBJS)
@@ -14,7 +14,7 @@ $(NAME):	$(OBJS)
 all:		$(NAME)
 
 bonus:		$(BOBJS) $(OBJS)
-			ar rcs $(NAME) $(BOBJS) $(OBJS)
+			@ar rcs $(NAME) $(BOBJS) $(OBJS)
 
 clean:
 			rm -f $(OBJS) $(BOBJS)
