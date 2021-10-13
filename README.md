@@ -2,7 +2,7 @@
 ## Welcome to my 42 cursus repo, I will use it mainly as a workspace, so I will upload it whenever I need it, enjoy!
 ### Projects:
 ```
-Piscine   - all the projects done at "la piscine";
+Piscine   - all the projects done at "la piscine" in 42 Roma Luiss;
 Libft     - graded with 112/115;
 Ft_server - graded with 100, autoindex script included;
 Cub3d     - graded with 115;
