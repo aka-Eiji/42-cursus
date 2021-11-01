@@ -4,10 +4,15 @@
 ```
 Piscine   - all the projects done at "la piscine" in 42 Roma Luiss;
 Libft     - graded with 112/115;
-Ft_server - graded with 100, autoindex script included;
+ft_Printf - grade with 103;
+ft_server - graded with 100, autoindex script included;
+netwhat   - graded with 100;
 Cub3d     - graded with 115;
 Minitalk  - graded with 115/125, unicode bonus included;
 Push_swap - graded with 84/100, no checker;
+Philosophers - in progress;
+Minishell - in progress;
+
 ```
 [![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jkosiara)](https://github.com/JaeSeoKim/badge42)
 <!--
