@@ -10,7 +10,7 @@ netwhat   - graded with 100;
 Cub3d     - graded with 115;
 Minitalk  - graded with 115/125, unicode bonus included;
 Push_swap - graded with 84/100, no checker;
-Philosophers - in progress;
+Philosophers - graded with 100 without bonus;
 Minishell - in progress;
 
 ```
