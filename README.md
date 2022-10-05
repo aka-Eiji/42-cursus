@@ -11,7 +11,7 @@ Cub3d     - graded with 115;
 Minitalk  - graded with 115/125, unicode bonus included;
 Push_swap - graded with 84/100, no checker;
 Philosophers - graded with 100 without bonus;
-Minishell - in progress;
+Minishell - graded with 100/100 without bonus;
 
 ```
 [![jaeskim's 42 stats](https://badge42.herokuapp.com/api/stats/jkosiara)](https://github.com/JaeSeoKim/badge42)
